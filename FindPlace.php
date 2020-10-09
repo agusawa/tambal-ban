@@ -1,64 +1,39 @@
 <?php
 // revision: 
-// 1. coding using english word
-// 2. choose typing CamelCase or Snake Case or Pascal Case or Normal Case
-// 3. no. 2 should consistent
-// 4. style curl brace ==> {}, example 
-// 4.1 function() {
-     
-//     }
-// 4.2 function()
-//     {
-    
-//     }
-// 5. choose no. 4.1 or no. 4.2
-// 6. choose the right data type ==> char ('') or string("")
-// 7. before create login and registration is used to create a account firstly
+// 1. before create login and registration is used to create a account firstly
 
 class FindPlace {
     // Dummy data for simulate available tire repair location.
-    private $available_locations = ['Gresik', 'Surabaya', 'Sidoarjo'];
-    protected $current_location;
-    private $isLocationFound=false;
+    private $availableLocations = ["Gresik", "Surabaya", "Sidoarjo"];
+    private $isLocationFound = false;
 
-    public function __construct($current_location) {
-        $this->current_location = $current_location;
+    protected $currentLocation;
+
+    public function __construct($currentLocation) {
+        $this->currentLocation = $currentLocation;
     }
 
     public function check() {
-
-        foreach ($this->available_locations as $available_location) {
-            if ($this->current_location === $available_location) {
+        foreach ($this->availableLocations as $availableLocation) {
+            if ($this->currentLocation === $availableLocation) {
                 $this->isLocationFound = true;
             }
         }
 
-        $this->isfind();
+        $this->isFound();
     }
 
-    private function isfind() {
+    private function isFound() {
         if ($this->isLocationFound) {
-            print("Ada tambal ban di lokasi ini.\n");
+            echo "Ada tambal ban di lokasi ini.<br />";
         } else {
-            print("Tidak ada tambal ban di lokasi ini.\n");
-        }       
+            echo "Tidak ada tambal ban di lokasi ini.<br />";
+        }
     }
 }
 
-// $current_location = "Gresik";
-// $find_place = new FindPlace($current_location);
-// $find_place->find();
-
-// $current_location = "Sidoarjo";
-// $find_place = new FindPlace($current_location);
-// $find_place->find();
-
-// $current_location = "Lamongan";
-// $find_place = new FindPlace($current_location);
-// $find_place->find();
-
-$dumloc =array("Gresik","Sidoarjo","Lamongan");
-for ($index = 0; $index < count($dumloc); $index++) {
-    $finpla =new FindPlace($dumloc[$index]);
-    $finpla->check();
+$dumpLocations = ["Gresik", "Sidoarjo", "Lamongan"];
+foreach ($dumpLocations as $location) {
+    $findPlace = new FindPlace($location);
+    $findPlace->check();
 }
