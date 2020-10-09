@@ -1,3 +1,4 @@
+<?php
 class ActivateAccount {
 	public function activate()
     {
