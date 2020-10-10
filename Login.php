@@ -25,5 +25,3 @@ $inputPassword = "peter1234";
 
 $login = new login($inputEmail, $inputPassword);
 $login ->isValid();
-
-?>
