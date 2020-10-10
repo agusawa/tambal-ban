@@ -15,21 +15,41 @@
 // 6. choose the right data type ==> char ('') or string("")
 // 7. before create login and registration is used to create a account firstly
 // 8. example basic php in file FindPlace.php
-
 class Signup {
-	public function insert(){
+    protected $inputName;
+    protected $inputEmail;
+    protected $inputPassword;
+    private $registeredEmail = "sara@gmail.com";
 
-		$available_id = 'nabila';
-        $new_id = 'ara';
-        $available_email = 'nabila@yahoo.com';
-        $new_email = 'ara@gmail.com';
-        
-        if ($available_id == $new_id AND $available_email == $new_email) {
-        echo "gagal";}
-        else {
-        echo "sukses";}
+	public function __construct($inputName, $inputEmail, $inputPassword) {
+        $this->inputName = $inputName;
+        $this->inputEmail = $inputEmail;
+        $this->inputPassword = $inputPassword;
+    }
+
+    public function isRegisteredEmail() {
+        if ($this->inputEmail === $this->registeredEmail) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function save() {
+        if ($this->isRegisteredEmail()) {
+            echo "Maaf, Email telah terdaftar";
+        } else {
+            echo "Selamat, anda berhasil";
+        }
+
     }
 }
 
-$insert_account = new Signup();
-$insert_account->insert();
+$inputName = "sara";
+$inputEmail = "ara@gmail.com";
+$inputPassword = "vaseline100";
+
+$signUp = new Signup($inputName, $inputEmail, $inputPassword);
+$signUp->save();
+
+         
