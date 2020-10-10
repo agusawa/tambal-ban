@@ -1,41 +1,39 @@
 <?php
+// revision: 
+// 1. before create login and registration is used to create a account firstly
 
 class FindPlace {
     // Dummy data for simulate available tire repair location.
-    private $available_locations = ['Gresik', 'Surabaya', 'Sidoarjo'];
-    protected $current_location;
+    private $availableLocations = ["Gresik", "Surabaya", "Sidoarjo"];
+    private $isLocationFound = false;
 
-    public function __construct($current_location)
-    {
-        $this->current_location = $current_location;
+    protected $currentLocation;
+
+    public function __construct($currentLocation) {
+        $this->currentLocation = $currentLocation;
     }
 
-    public function find()
-    {
-        $isLocationFound = false;
-
-        foreach ($this->available_locations as $available_location) {
-            if ($this->current_location === $available_location) {
-                $isLocationFound = true;
+    public function check() {
+        foreach ($this->availableLocations as $availableLocation) {
+            if ($this->currentLocation === $availableLocation) {
+                $this->isLocationFound = true;
             }
         }
 
-        if ($isLocationFound) {
-            echo "Ada tambal ban di lokasi ini.";
+        $this->isFound();
+    }
+
+    private function isFound() {
+        if ($this->isLocationFound) {
+            echo "Ada tambal ban di lokasi ini.<br />";
         } else {
-            echo "Tidak ada tambal ban di lokasi ini.";
+            echo "Tidak ada tambal ban di lokasi ini.<br />";
         }
     }
 }
 
-$current_location = "Gresik";
-$find_place = new FindPlace($current_location);
-$find_place->find();
-
-$current_location = "Sidoarjo";
-$find_place = new FindPlace($current_location);
-$find_place->find();
-
-$current_location = "Lamongan";
-$find_place = new FindPlace($current_location);
-$find_place->find();
+$dumpLocations = ["Gresik", "Sidoarjo", "Lamongan"];
+foreach ($dumpLocations as $location) {
+    $findPlace = new FindPlace($location);
+    $findPlace->check();
+}
