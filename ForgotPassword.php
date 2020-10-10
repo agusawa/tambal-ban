@@ -1,24 +1,30 @@
 <?php
-  class Forgot_password {
-  public function send($lupa){
-	
-	  
-      $my_email = 'ikanuril@gmail.com';
-      $available_email = 'ika@gmail.com';
-      $my_password = 'ikanuril';
-      $available_password = 'ika';
-      if  ($my_email==$available_email AND $my_password==$available_password){
-              echo "Login Berhasil";
-            }else{
-		  echo"Login Gagal<br/>";
-		  
-	  }
-	  echo "$lupa";
-	 
-    }
-	  
-	    
-  }
+  class ForgotPassword {
 
-$reset = new Forgot_password();
-$reset->send("Silahkan cek email anda untuk reset password");
+    protected $Email;
+    protected $newEmail;
+
+    private $availableEmail = "ikanuril@gmail.com";
+
+
+    public function check($Email, $newEmail){
+      $this->email = $Email;
+      $this->newEmail = $newEmail;
+    }
+    
+
+  public function send(){
+    if ($this->Email === $this->availableEmail){
+      echo "Login Success";
+    } else {
+      echo "Check Your Email To Reset Your Password";
+    }
+  }
+}
+
+
+$Email = "ikanuril@gmail.com";
+$newEmail = "ika@gmail.com";
+
+$forgotPassword = new ForgotPassword($Email, $newEmail);
+$forgotPassword->send();
