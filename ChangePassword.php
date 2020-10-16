@@ -18,25 +18,25 @@ class ChangePassword {
     public function isValidId() {
         if ($this->inputId === $this->correctId) {
             return true;
-            } else {
+        } else {
             return false;
-            }
+        }
     }
          
     public function isValidOldPassword() {
         if ($this->inputOldPassword === $this->correctOldPassword) {
             return true;
-            } else {
+        } else {
             return false;
-            }
+        }
     }
      
     public function isValidPassword () {
         if ($this->inputPassword1 === $this->inputPassword2) {
             return true;
-            } else {
+        } else {
             return false;
-            }
+        }
      }
      
      public function save() {
@@ -46,9 +46,9 @@ class ChangePassword {
             echo "Password lama tidak sesuai";
         } else if (!$this->isValidPassword()) {
             echo "Password1 dan password2 tidak sesuai";
-                } else {
-                echo "Sukses, password berhasil diperbarui";
-                }
+        } else {
+            echo "Sukses, password berhasil diperbarui";
+        }
      }
 }
 
