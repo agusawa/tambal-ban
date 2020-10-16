@@ -36,7 +36,7 @@ $inputId = "rahmadini234";
 $inputName = "Howard";
 
 $changeProfileInformation = new ChangeProfileInformation($inputId, $inputEmail, $inputName);
-$changeProfileInformation -> isValidId();
-$changeProfileInformation -> isRegisteredEmail();
+$changeProfileInformation->isValidId();
+$changeProfileInformation->isRegisteredEmail();
 
 ?>
