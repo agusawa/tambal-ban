@@ -8,19 +8,19 @@ class AccountModel implements Model {
     protected $email;
     protected $password;
 
-    public function getId($name) {
+    public function getId() {
         return $this->id;
     }
 
-    public function getName($name) {
+    public function getName() {
         return $this->name;
     }
 
-    public function getEmail($email) {
+    public function getEmail() {
         return $this->email;
     }
 
-    public function getPassword($password) {
+    public function getPassword() {
         return $this->password;
     }
 
