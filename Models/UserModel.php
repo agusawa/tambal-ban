@@ -1,4 +1,6 @@
 <?php
+  declare(strict_types=1);
+  
   abstract class User {
       
       public $arrayUserId = array(); 
@@ -22,14 +24,6 @@
           $this->arrayUserId[$index] = $userId;
         }
         return $this->arrayUserId;
-      }
-
-      public function checkParentClass($fileClass) {
-        return get_parent_class($fileClass);
-      }
-
-      public function checkSubClass($childClass, $parentClass) {
-        return is_subclass_of($childClass, $parentClass);
       }
   }
 ?>
