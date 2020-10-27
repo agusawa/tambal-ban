@@ -37,9 +37,9 @@ class ChangePassword {
         } else {
             return false;
         }
-     }
+    }
      
-     public function save() {
+    public function save() {
         if (!$this->isValidId()) {
             echo "Id akun tidak valid";
         } else if (!$this->isValidOldPassword()) {
@@ -49,7 +49,13 @@ class ChangePassword {
         } else {
             echo "Sukses, password berhasil diperbarui";
         }
-     }
+    }
+
+    protected function get() {
+    }
+
+    protected function post() {     
+    }
 }
 
 $inputId = "01375";

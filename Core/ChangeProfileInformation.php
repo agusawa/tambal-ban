@@ -29,6 +29,14 @@ class ChangeProfileInformation {
 			echo "succes, your email have been register. <br/>";
 		}
 	}
+
+	protected function get() {
+
+	}
+
+	protected function post() {
+		
+	}
 }
 
 $inputEmail = "dwirahma@example.com";
