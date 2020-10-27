@@ -1,4 +1,11 @@
 <?php
+
+// process forgot password
+// generate array of email --> function return array
+// check email --> function return boolean
+// password status --> return boolean ==> change password or not
+// input new password --> function ==> input new password 
+
 class ForgotPassword {
     protected $email;
     protected $newEmail;
