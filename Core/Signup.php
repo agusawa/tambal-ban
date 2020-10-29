@@ -44,6 +44,14 @@ class Signup {
         }
 
     }
+
+    public function get(){
+
+    }
+
+    public function post(){
+        
+    }
 }
 
 $inputName = "sara";

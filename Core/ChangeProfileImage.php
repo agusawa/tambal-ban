@@ -23,7 +23,14 @@ class ChangeProfileImage {
         } else {
             echo "Id akun tidak valid";
         }
+    }
+    
+    public function get(){
 
+    }
+
+    public function post(){
+        
     }
 }
 
