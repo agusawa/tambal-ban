@@ -30,6 +30,14 @@ class FindPlace {
             echo "Tidak ada tambal ban di lokasi ini.<br />";
         }
     }
+
+    protected function get() {
+
+    }
+
+    protected function post() {
+
+    }
 }
 
 $dumpLocations = ["Gresik", "Sidoarjo", "Lamongan"];
