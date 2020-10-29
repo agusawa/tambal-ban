@@ -27,6 +27,11 @@ class ActivateAccount {
 			echo "Gagal";
 		}
     }
+    protected function get() {
+    }
+
+    protected function post() {    	
+    }
 }
 
 $inputEmail = "abcd99@gmail.com";

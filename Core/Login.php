@@ -18,6 +18,14 @@ class login {
 			echo "wrong password or email!";
 		}
 	}
+
+	protected function get() {
+
+	}
+
+	protected function post() {
+		
+	}
 }
 
 $inputEmail = "peter@example.com";
