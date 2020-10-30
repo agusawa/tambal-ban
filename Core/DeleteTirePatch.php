@@ -1,9 +1,10 @@
 <?php
+
 class DeleteTirePatch {
     protected $inputId;
     private $registeredId = "ara123";
 
-	public function __construct($inputId) {
+    public function __construct($inputId) {
         $this->inputId = $inputId;
     }
 
@@ -21,7 +22,6 @@ class DeleteTirePatch {
         } else {
             echo "Id akun tidak valid";
         }
-
     }
 }
 
@@ -29,5 +29,3 @@ $inputId = "ara";
 
 $DeleteTirePatch = new DeleteTirePatch($inputId);
 $DeleteTirePatch->save();
-
-
