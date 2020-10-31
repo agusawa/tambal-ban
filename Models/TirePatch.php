@@ -1,6 +1,6 @@
 <?php
 
-class TirePatch {
+class TirePatch implements Model {
 	private $id;
 	private $name;
 	private $description;
@@ -51,4 +51,12 @@ class TirePatch {
 	public function setAccountId($accountId) {
 		$this->accountId = $accountId;
 	}
+
+    public function save() {
+
+    } 
+
+    public static function delete($id) {
+
+    }
 }

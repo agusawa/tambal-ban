@@ -1,6 +1,6 @@
 <?php
 
-class Account {
+class Account implements Model {
     protected $id;
     protected $name;
     protected $email;
@@ -32,5 +32,13 @@ class Account {
 
     public function setPassword($password) {
         $this->password = $password;
+    }
+
+    public function save() {
+
+    } 
+
+    public static function delete($id) {
+
     }
 }
