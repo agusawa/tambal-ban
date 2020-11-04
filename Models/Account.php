@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . "/../Core/Model.php";
+
 class Account implements Model {
     protected $id;
     protected $name;

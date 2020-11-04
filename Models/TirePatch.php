@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . "/../Core/Model.php";
+
 class TirePatch implements Model {
 	private $id;
 	private $name;
