@@ -1,5 +1,7 @@
 <?php
 
+require _DIR_ . "/../Core/Model.php";
+
 class TirePatch {
 	protected $id;
 	protected $name;
@@ -51,4 +53,33 @@ class TirePatch {
 	public function setAccountId($accountId) {
 		$this->accountId = $accountId;
 	}
+
+    public function save() {
+
+    } 
+
+    public static function delete($id) {
+
+    }
+}
+
+	public function setAddress($address) {
+		$this->address = $address;
+	}
+
+	public function setWhatsapp($whatsapp) {
+		$this->whatsapp = $whatsapp;
+	}
+
+	public function setAccountId($accountId) {
+		$this->accountId = $accountId;
+	}
+
+    public function save() {
+
+    } 
+
+    public static function delete($id) {
+
+    }
 }
