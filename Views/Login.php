@@ -1,5 +1,7 @@
 <?php
-class login {
+
+require __DIR__ . "/../Core/View.php";
+class login extends View {
 	private $correctEmail = "peter@example.com";
 	private $correctPassword = "peter1234";
 
@@ -7,20 +9,29 @@ class login {
 	protected $inputPassword;
 
 	public function __construct($inputEmail, $inputPassword) {
-		$this->inputEmail = $inputEmail;
-		$this->inputPassword = $inputPassword;
+	// 	$this->inputEmail = $inputEmail;
+	// 	$this->inputPassword = $inputPassword;
+	parent::__construct();
 	}
 
 	public function isValid() {
 		if($this->inputEmail === $this->correctEmail AND $this->inputPassword === $this->correctPassword) {
-			echo "Login succesful!";
+			return true;
 		} else {
-			echo "wrong password or email!";
+			return false;
+		}
+	}
+
+	public function save() {
+		if($this->isValid()) {
+			echo "Login succesful";
+		} else {
+			echo "wrong password or email";
 		}
 	}
 
 	protected function get() {
-
+		$this->render("Login.php");
 	}
 
 	protected function post() {
@@ -32,4 +43,4 @@ $inputEmail = "peter@example.com";
 $inputPassword = "peter1234";
 
 $login = new login($inputEmail, $inputPassword);
-$login ->isValid();
+// $login ->isValid();
