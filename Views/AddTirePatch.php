@@ -19,16 +19,16 @@ class AddTirePatch {
 
 	public function save() {
 		if($this->inputAccountId === $this->correctAccountId) {
-			echo "the id have already been saved";
+			echo "id sudah disimpan";
 		} else {
-			echo "success, the id will be added";
+			echo "sukses, id sudah berhasil ditambah";
 		}
 	}
 }
 
 $inputAccountId = "bengkelAnugrah";
 $inputName = "Dante";
-$inputDescription = "";
+$inputDescription = "buka jam 7 pagi";
 $inputPicture = "image.png";
 $inputNoWhatsapp = '08211324356';
 
