@@ -24,13 +24,8 @@ abstract class View {
         }
     }
 
-    protected function get() {
-        // Should return 404 error.
-    }
-
-    protected function post() {
-        // Should return 404 error.
-    }
+    abstract protected function get();
+    abstract protected function post();
 
     protected function redirect($location) {
         header("Location: $location");
