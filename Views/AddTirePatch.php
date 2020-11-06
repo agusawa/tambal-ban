@@ -1,6 +1,7 @@
 <?php
 
-class AddTirePatch {
+require __DIR__ . "/../Core/View.php";
+class AddTirePatch extends View {
 	private $correctAccountId = "bengkelAnugrah";
 
 	protected $inputAccountId;
@@ -10,11 +11,12 @@ class AddTirePatch {
 	protected $inputNoWhatsapp;
 
 	public function __construct($inputAccountId, $inputName, $inputDescription, $inputPicture, $inputNoWhatsapp) {
-		$this->inputAccountId = $inputAccountId;
-		$this->inputName = $inputName;
-		$this->inputDescription = $inputDescription;
-		$this->inputPicture = $inputPicture;
-		$this->inputNoWhatsapp = $inputNoWhatsapp;
+		// $this->inputAccountId = $inputAccountId;
+		// $this->inputName = $inputName;
+		// $this->inputDescription = $inputDescription;
+		// $this->inputPicture = $inputPicture;
+		// $this->inputNoWhatsapp = $inputNoWhatsapp;
+		parent::__construct();
 	}
 
 	public function save() {
@@ -23,6 +25,14 @@ class AddTirePatch {
 		} else {
 			echo "sukses, id sudah berhasil ditambah";
 		}
+	}
+
+	protected function get() {
+		$this->render("AddTirePatch.php");
+	}
+
+	protected function post() {
+
 	}
 }
 
@@ -33,6 +43,6 @@ $inputPicture = "image.png";
 $inputNoWhatsapp = '08211324356';
 
 $addTirePatch = new addTirePatch($inputAccountId, $inputName, $inputDescription, $inputPicture, $inputNoWhatsapp);
-$addTirePatch->save();
+// $addTirePatch->save();
 
 ?>
