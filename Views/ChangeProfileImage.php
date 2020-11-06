@@ -1,12 +1,14 @@
 <?php
-class ChangeProfileImage {
+require __DIR__ . "/../Core/View.php";
+class ChangeProfileImage extends View {
     private $registeredId = "ara12";
     protected $inputId;
     protected $inputImage;
 
 	public function __construct($inputId, $inputImage) {
-        $this->inputId = $inputId;
-        $this->inputImage = $inputImage;
+        // $this->inputId = $inputId;
+        // $this->inputImage = $inputImage;
+        parent::__construct();
     }
 
     public function isValidId() {
@@ -26,7 +28,7 @@ class ChangeProfileImage {
     }
     
     public function get(){
-
+        $this->render("ChangeProfileImage.php");
     }
 
     public function post(){
@@ -38,6 +40,6 @@ $inputId = "ara123";
 $inputImage = "gambar.png";
 
 $ChangeProfileImage = new ChangeProfileImage($inputId, $inputImage);
-$ChangeProfileImage->save();
+// $ChangeProfileImage->save();
 
 

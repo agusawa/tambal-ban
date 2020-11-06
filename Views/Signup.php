@@ -16,16 +16,18 @@
 // 7. before create login and registration is used to create a account firstly
 // 8. example basic php in file FindPlace.php
 
-class Signup {
+require __DIR__ . "/../Core/View.php";
+class Signup extends View {
     protected $inputName;
     protected $inputEmail;
     protected $inputPassword;
     private $registeredEmail = "sara@gmail.com";
 
 	public function __construct($inputName, $inputEmail, $inputPassword) {
-        $this->inputName = $inputName;
-        $this->inputEmail = $inputEmail;
-        $this->inputPassword = $inputPassword;
+        // $this->inputName = $inputName;
+        // $this->inputEmail = $inputEmail;
+        // $this->inputPassword = $inputPassword;
+        parent::__construct();
     }
 
     public function isRegisteredEmail() {
@@ -46,7 +48,7 @@ class Signup {
     }
 
     public function get(){
-
+        $this->render("Signup.php");
     }
 
     public function post(){
@@ -59,6 +61,6 @@ $inputEmail = "ara@gmail.com";
 $inputPassword = "vaseline100";
 
 $signUp = new Signup($inputName, $inputEmail, $inputPassword);
-$signUp->save();
+//$signUp->save();
 
          
