@@ -1,12 +1,12 @@
 <?php
 
 class TirePatch {
-	private $id;
-	private $name;
-	private $description;
-	private $address;
-	private $whatsapp;
-	private $accountId;
+	protected $id;
+	protected $name;
+	protected $description;
+	protected $address;
+	protected $whatsapp;
+	protected $accountId;
 
 	public function getId() {
 		return $this->id;
@@ -17,7 +17,7 @@ class TirePatch {
 	}
 
 	public function getDescription() {
-		return $this->email;
+		return $this->description;
 	}
 
 	public function getAddress() {
