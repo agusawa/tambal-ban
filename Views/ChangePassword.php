@@ -1,5 +1,8 @@
 <?php
-class ChangePassword {
+
+require __DIR__ . "/../Core/View.php";
+
+class ChangePassword extends View {
     private $correctId = "01375";
     private $correctOldPassword = "betulini27";
     
@@ -9,10 +12,12 @@ class ChangePassword {
     protected $inputPassword2;
     
     public function __construct($inputId, $inputOldPassword, $inputPassword1, $inputPassword2) {
-        $this->inputId = $inputId;
-        $this->inputOldPassword = $inputOldPassword;
-        $this->inputPassword1 = $inputPassword1;
-        $this->inputPassword2 = $inputPassword2;
+        // $this->inputId = $inputId;
+        // $this->inputOldPassword = $inputOldPassword;
+        // $this->inputPassword1 = $inputPassword1;
+        // $this->inputPassword2 = $inputPassword2;
+
+        parent ::__construct();
     }
     
     public function isValidId() {
@@ -52,6 +57,7 @@ class ChangePassword {
     }
 
     protected function get() {
+        $this->render("ChangePassword.php");
     }
 
     protected function post() {     
@@ -64,5 +70,5 @@ $inputPassword1 = "aqs12345";
 $inputPassword2 = "aqs12345";
 
 $changePassword = new ChangePassword($inputId, $inputOldPassword, $inputPassword1, $inputPassword2);
-$changePassword->save();
+// $changePassword->save();
 ?>
