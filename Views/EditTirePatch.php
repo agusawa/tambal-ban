@@ -1,5 +1,8 @@
 <?php
-class EditTirePatch {
+
+require __DIR__ . "/../Core/View.php";
+
+class EditTirePatch extends View {
 	private $correctId = "09635";
     
     protected $inputId;
@@ -9,11 +12,13 @@ class EditTirePatch {
     protected $inputWhatsapp;
     
     public function __construct($inputId, $inputName, $inputDescription, $inputImage, $inputWhatsapp) {
-    	$this->inputId = $inputId;
-        $this->inputName = $inputName;
-        $this->inputDescription = $inputDescription;
-        $this->inputImage = $inputImage;
-        $this->inputWhatsapp = $inputWhatsapp;
+    	// $this->inputId = $inputId;
+        // $this->inputName = $inputName;
+        // $this->inputDescription = $inputDescription;
+        // $this->inputImage = $inputImage;
+        // $this->inputWhatsapp = $inputWhatsapp;
+
+        parent ::__construct();
     }
     
     public function save() {
@@ -22,6 +27,12 @@ class EditTirePatch {
         } else {
         	echo "Id Tidak Terdaftar";
         }
+    }
+    protected function get() {
+        $this->render("EditTirePatch.php");
+    }
+  
+      protected function post() {    	
     }
 }
 
@@ -32,5 +43,5 @@ $inputImage = "gambar.png";
 $inputWhatsapp = "085356486921";
 
 $editTirePatch = new EditTirePatch ($inputId, $inputName, $inputDescription, $inputImage, $inputWhatsapp);
-$editTirePatch->save();
+// $editTirePatch->save();
 ?> 

@@ -8,16 +8,20 @@
 // class registration (input) --> checking name and email use a class validation then, use a class activation (proses) --> store name, email and token in cookies/txt/database (output)
 // class login (input) --> use a class validation for checking name, email and token (proses) --> main menu (output)
 
-class ActivateAccount {
+require __DIR__ . "/../Core/View.php";
+
+class ActivateAccount extends View {
 	private $availableEmail = 'abcd99@gmail.com';
-    private $availableToken = '01ABCD';
+  private $availableToken = '01ABCD';
     
     protected $inputEmail;
     protected $inputToken;
     
 	public function __construct($inputEmail, $inputToken) {
-		$this->inputEmail = $inputEmail;
-		$this->inputToken = $inputToken;
+		// $this->inputEmail = $inputEmail;
+    // $this->inputToken = $inputToken;
+    
+    parent ::__construct();
     }
     
     public function isValid() {
@@ -28,6 +32,7 @@ class ActivateAccount {
 		}
     }
     protected function get() {
+      $this->render("AccountActivation.php");
     }
 
     protected function post() {    	
@@ -38,5 +43,5 @@ $inputEmail = "abcd99@gmail.com";
 $inputToken = "01ABCD";
 
 $activateAccount = new ActivateAccount($inputEmail, $inputToken);
-$activateAccount->isValid();
+// $activateAccount->isValid();
 ?> 

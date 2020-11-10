@@ -1,6 +1,7 @@
 <?php
 
-class ChangeProfileInformation {
+require __DIR__ . "/../Core/View.php";
+class ChangeProfileInformation extends View {
 	private $correctId = "abe43";
 	private $registeredEmail = "abe@example.com";
 
@@ -9,9 +10,10 @@ class ChangeProfileInformation {
 	protected $inputName;
 
 	public function __construct($inputId, $inputEmail, $inputName) {
-		$this->inputEmail = $inputEmail;
-		$this->inputId = $inputId;
-		$this->inputName = $inputName;
+		// $this->inputEmail = $inputEmail;
+		// $this->inputId = $inputId;
+		// $this->inputName = $inputName;
+		parent::__construct();
 	}
 
 	public function isValidId() {
@@ -31,6 +33,7 @@ class ChangeProfileInformation {
 	}
 
 	protected function get() {
+		$this->render("ChangeProfileInformation.php");
 
 	}
 
@@ -44,7 +47,7 @@ $inputId = "rahmadini234";
 $inputName = "Howard";
 
 $changeProfileInformation = new ChangeProfileInformation($inputId, $inputEmail, $inputName);
-$changeProfileInformation->isValidId();
-$changeProfileInformation->isRegisteredEmail();
+// $changeProfileInformation->isValidId();
+// $changeProfileInformation->isRegisteredEmail();
 
 ?>

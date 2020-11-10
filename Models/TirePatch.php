@@ -1,14 +1,14 @@
 <?php
 
-require __DIR__ . "/../Core/Model.php";
+require _DIR_ . "/../Core/Model.php";
 
-class TirePatch implements Model {
-	private $id;
-	private $name;
-	private $description;
-	private $address;
-	private $whatsapp;
-	private $accountId;
+class TirePatch {
+	protected $id;
+	protected $name;
+	protected $description;
+	protected $address;
+	protected $whatsapp;
+	protected $accountId;
 
 	public function getId() {
 		return $this->id;
@@ -19,7 +19,7 @@ class TirePatch implements Model {
 	}
 
 	public function getDescription() {
-		return $this->email;
+		return $this->description;
 	}
 
 	public function getAddress() {
@@ -41,6 +41,27 @@ class TirePatch implements Model {
 	public function setDescription($description) {
 		$this->description = $description;
 	}
+
+	public function setAddress($address) {
+		$this->address = $address;
+	}
+
+	public function setWhatsapp($whatsapp) {
+		$this->whatsapp = $whatsapp;
+	}
+
+	public function setAccountId($accountId) {
+		$this->accountId = $accountId;
+	}
+
+    public function save() {
+
+    } 
+
+    public static function delete($id) {
+
+    }
+}
 
 	public function setAddress($address) {
 		$this->address = $address;
