@@ -38,4 +38,8 @@ abstract class View {
 
         require __DIR__ . "/../Templates/$file";
     }
+
+    protected function notFound() {
+        $this->render("404.php");
+    }
 }
