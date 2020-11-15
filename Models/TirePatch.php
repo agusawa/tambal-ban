@@ -1,6 +1,6 @@
 <?php
 
-require _DIR_ . "/../Core/Model.php";
+require __DIR__ . "/../Core/Model.php";
 
 class TirePatch {
 	protected $id;
@@ -41,27 +41,6 @@ class TirePatch {
 	public function setDescription($description) {
 		$this->description = $description;
 	}
-
-	public function setAddress($address) {
-		$this->address = $address;
-	}
-
-	public function setWhatsapp($whatsapp) {
-		$this->whatsapp = $whatsapp;
-	}
-
-	public function setAccountId($accountId) {
-		$this->accountId = $accountId;
-	}
-
-    public function save() {
-
-    } 
-
-    public static function delete($id) {
-
-    }
-}
 
 	public function setAddress($address) {
 		$this->address = $address;
