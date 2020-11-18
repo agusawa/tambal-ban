@@ -1,7 +1,7 @@
 <?php
 
 trait OnlyHttpGet {
-	protected function notFound() {
+	protected function post() {
 		$this->notFound();
 	}
 }
