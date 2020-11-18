@@ -1,5 +1,7 @@
 <?php
+
 require __DIR__ . "/../Core/View.php";
+
 class DeleteTirePatch extends View {
     protected $inputId;
     private $registeredId = "ara123";
@@ -25,12 +27,12 @@ class DeleteTirePatch extends View {
         }
     }
 
-    public function get(){
+    public function get() {
         $this->render("DeleteTirePatch.php");
     }
 
-    public function post(){
-        
+    public function post() {
+
     }
 }
 

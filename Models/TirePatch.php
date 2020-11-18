@@ -3,12 +3,12 @@
 require __DIR__ . "/../Core/Model.php";
 
 class TirePatch {
-	protected $id;
-	protected $name;
-	protected $description;
-	protected $address;
-	protected $whatsapp;
-	protected $accountId;
+	private $id;
+	private $name;
+	private $description;
+	private $address;
+	private $whatsapp;
+	private $accountId;
 
 	public function getId() {
 		return $this->id;

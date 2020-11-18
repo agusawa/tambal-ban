@@ -3,10 +3,10 @@
 require __DIR__ . "/../Core/Model.php";
 
 class Account implements Model {
-    protected $id;
-    protected $name;
-    protected $email;
-    protected $password;
+    private $id;
+    private $name;
+    private $email;
+    private $password;
 
     public function getId() {
         return $this->id;

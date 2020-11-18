@@ -5,21 +5,21 @@ require __DIR__ . "/../Core/View.php";
 class ChangePassword extends View {
     private $correctId = "01375";
     private $correctOldPassword = "betulini27";
-    
+
     protected $inputId;
     protected $inputOldPassword;
     protected $inputPassword1;
     protected $inputPassword2;
-    
+
     public function __construct($inputId, $inputOldPassword, $inputPassword1, $inputPassword2) {
         // $this->inputId = $inputId;
         // $this->inputOldPassword = $inputOldPassword;
         // $this->inputPassword1 = $inputPassword1;
         // $this->inputPassword2 = $inputPassword2;
 
-        parent ::__construct();
+        parent::__construct();
     }
-    
+
     public function isValidId() {
         if ($this->inputId === $this->correctId) {
             return true;
@@ -27,7 +27,7 @@ class ChangePassword extends View {
             return false;
         }
     }
-         
+
     public function isValidOldPassword() {
         if ($this->inputOldPassword === $this->correctOldPassword) {
             return true;
@@ -35,15 +35,15 @@ class ChangePassword extends View {
             return false;
         }
     }
-     
-    public function isValidPassword () {
+
+    public function isValidPassword() {
         if ($this->inputPassword1 === $this->inputPassword2) {
             return true;
         } else {
             return false;
         }
     }
-     
+
     public function save() {
         if (!$this->isValidId()) {
             echo "Id akun tidak valid";
@@ -60,7 +60,8 @@ class ChangePassword extends View {
         $this->render("ChangePassword.php");
     }
 
-    protected function post() {     
+    protected function post() {
+
     }
 }
 
@@ -71,4 +72,3 @@ $inputPassword2 = "aqs12345";
 
 $changePassword = new ChangePassword($inputId, $inputOldPassword, $inputPassword1, $inputPassword2);
 // $changePassword->save();
-?>

@@ -1,6 +1,7 @@
 <?php
 
 require __DIR__ . "/../Core/View.php";
+
 class AddTirePatch extends View {
 	private $correctAccountId = "bengkelAnugrah";
 
@@ -20,7 +21,7 @@ class AddTirePatch extends View {
 	}
 
 	public function save() {
-		if($this->inputAccountId === $this->correctAccountId) {
+		if ($this->inputAccountId === $this->correctAccountId) {
 			echo "id sudah disimpan";
 		} else {
 			echo "sukses, id sudah berhasil ditambah";
@@ -42,7 +43,5 @@ $inputDescription = "buka jam 7 pagi";
 $inputPicture = "image.png";
 $inputNoWhatsapp = '08211324356';
 
-$addTirePatch = new addTirePatch($inputAccountId, $inputName, $inputDescription, $inputPicture, $inputNoWhatsapp);
+$addTirePatch = new AddTirePatch($inputAccountId, $inputName, $inputDescription, $inputPicture, $inputNoWhatsapp);
 // $addTirePatch->save();
-
-?>

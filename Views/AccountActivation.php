@@ -12,31 +12,32 @@ require __DIR__ . "/../Core/View.php";
 
 class ActivateAccount extends View {
 	private $availableEmail = 'abcd99@gmail.com';
-  private $availableToken = '01ABCD';
-    
-    protected $inputEmail;
-    protected $inputToken;
-    
+	private $availableToken = '01ABCD';
+
+	protected $inputEmail;
+	protected $inputToken;
+
 	public function __construct($inputEmail, $inputToken) {
 		// $this->inputEmail = $inputEmail;
-    // $this->inputToken = $inputToken;
-    
-    parent ::__construct();
-    }
-    
-    public function isValid() {
-		if ($this->inputEmail === $this->availableEmail AND $this->inputToken === $this->availableToken) {
+		// $this->inputToken = $inputToken;
+
+		parent::__construct();
+	}
+
+	public function isValid() {
+		if ($this->inputEmail === $this->availableEmail and $this->inputToken === $this->availableToken) {
 			echo "Sukses";
 		} else {
 			echo "Gagal";
 		}
-    }
-    protected function get() {
-      $this->render("AccountActivation.php");
-    }
+	}
+	protected function get() {
+		$this->render("AccountActivation.php");
+	}
 
-    protected function post() {    	
-    }
+	protected function post() {
+
+	}
 }
 
 $inputEmail = "abcd99@gmail.com";
@@ -44,4 +45,3 @@ $inputToken = "01ABCD";
 
 $activateAccount = new ActivateAccount($inputEmail, $inputToken);
 // $activateAccount->isValid();
-?> 

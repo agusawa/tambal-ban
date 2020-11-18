@@ -1,4 +1,5 @@
 <?php
+
 class Request {
     private $params;
     private $inputs;

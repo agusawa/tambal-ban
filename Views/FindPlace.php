@@ -1,8 +1,8 @@
 <?php
-// revision: 
-// 1. before create login and registration is used to create a account firstly
 
-class FindPlace {
+require __DIR__ . "/../Core/View.php";
+
+class FindPlace extends View {
     // Dummy data for simulate available tire repair location.
     private $availableLocations = ["Gresik", "Surabaya", "Sidoarjo"];
     private $isLocationFound = false;
@@ -10,7 +10,8 @@ class FindPlace {
     protected $currentLocation;
 
     public function __construct($currentLocation) {
-        $this->currentLocation = $currentLocation;
+        // $this->currentLocation = $currentLocation;
+        parent::__construct();
     }
 
     public function check() {
@@ -32,7 +33,7 @@ class FindPlace {
     }
 
     protected function get() {
-
+        $this->render("FindPlace.php");
     }
 
     protected function post() {
@@ -40,8 +41,10 @@ class FindPlace {
     }
 }
 
-$dumpLocations = ["Gresik", "Sidoarjo", "Lamongan"];
-foreach ($dumpLocations as $location) {
-    $findPlace = new FindPlace($location);
-    $findPlace->check();
-}
+// $dumpLocations = ["Gresik", "Sidoarjo", "Lamongan"];
+// foreach ($dumpLocations as $location) {
+//     $findPlace = new FindPlace($location);
+//     $findPlace->check();
+// }
+$location = "Gresik";
+new FindPlace($location);

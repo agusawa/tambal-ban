@@ -1,11 +1,14 @@
 <?php
+
 require __DIR__ . "/../Core/View.php";
+
 class ChangeProfileImage extends View {
     private $registeredId = "ara12";
+
     protected $inputId;
     protected $inputImage;
 
-	public function __construct($inputId, $inputImage) {
+    public function __construct($inputId, $inputImage) {
         // $this->inputId = $inputId;
         // $this->inputImage = $inputImage;
         parent::__construct();
@@ -26,13 +29,13 @@ class ChangeProfileImage extends View {
             echo "Id akun tidak valid";
         }
     }
-    
-    public function get(){
+
+    public function get() {
         $this->render("ChangeProfileImage.php");
     }
 
-    public function post(){
-        
+    public function post() {
+
     }
 }
 
@@ -41,5 +44,3 @@ $inputImage = "gambar.png";
 
 $ChangeProfileImage = new ChangeProfileImage($inputId, $inputImage);
 // $ChangeProfileImage->save();
-
-
