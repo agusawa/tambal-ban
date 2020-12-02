@@ -28,14 +28,14 @@ DROP TABLE IF EXISTS 'tire_patches';
 -- create 'tire_patches' table.
 CREATE TABLE 'tire_patches' (
 	'id' INT(10) NOT NULL AUTO_INCREMENT,
-	'user_id' CHAR(10) NOT NULL,
+	'user_id' INT(10) NOT NULL,
 	'name' VARCHAR(50) NOT NULL,
 	'address' VARCHAR(255) NOT NULL,
-	'description' TEXT NULL,
+	'description' TEXT(500) NULL,
 	'picture' VARCHAR(255) NULL,
 	'whatsapp_number' VARCHAR(15) NOT NULL,
 	'created' INT(10) NOT NULL,
 	'updated' INT(10) NULL,
-	PRIMARY KEY ('id')
+	PRIMARY KEY ('id'),
 	FOREIGN KEY ('user_id') REFERENCES 'user'('id') ON DELETE CASCADE
 	)ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_general_ci;
