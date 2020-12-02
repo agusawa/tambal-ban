@@ -28,7 +28,7 @@ CREATE TABLE `tire_patches` (
     `account_id`    	CHAR(36)        COLLATE utf8mb4_general_ci NOT NULL,
     `name`          	VARCHAR(50)     COLLATE utf8mb4_general_ci NOT NULL,
     `address`			VARCHAR(255)	COLLATE utf8mb4_general_ci NOT NULL,
-    `description`		TEXT			COLLATE utf8mb4_general_ci NULL,
+    `description`		TEXT(500)		COLLATE utf8mb4_general_ci NULL,
     `picture`			VARCHAR(255)    COLLATE utf8mb4_general_ci NULL,
     `whatsapp_number`	VARCHAR(14)		COLLATE utf8mb4_general_ci NOT NULL,
     `created_at`    	INT(10) 		NOT NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `tire_patch_facilities` (
     `id`            	CHAR(36)	COLLATE utf8mb4_general_ci NOT NULL PRIMARY KEY,
     `tire_patch_id`    	CHAR(36)	COLLATE utf8mb4_general_ci NOT NULL,
     `name`          	VARCHAR(50)	COLLATE utf8mb4_general_ci NOT NULL,
-    `description`		TEXT		COLLATE utf8mb4_general_ci NULL,
+    `description`		TEXT(500)	COLLATE utf8mb4_general_ci NULL,
     `created_at`    	INT(10)		NOT NULL,
     `updated_at`    	INT(10) 	NULL,
 	FOREIGN KEY (`tire_patch_id`) REFERENCES `tire_patches`(`id`) ON DELETE CASCADE
@@ -56,8 +56,8 @@ CREATE TABLE `tire_patch_rates` (
     `id`            	CHAR(36)	COLLATE utf8mb4_general_ci NOT NULL PRIMARY KEY,
     `tire_patch_id`    	CHAR(36)    COLLATE utf8mb4_general_ci NOT NULL,
     `account_id`    	CHAR(36)	COLLATE utf8mb4_general_ci NOT NULL,
-    `rate`          	TINYINT		NOT NULL,
-	`comment`			TEXT		COLLATE utf8mb4_general_ci NULL,
+    `rate`          	TINYINT(1)	NOT NULL,
+	`comment`			TEXT(500)	COLLATE utf8mb4_general_ci NULL,
     `created_at`    	INT(10)		NOT NULL,
     `updated_at`    	INT(10)		NULL,
 	FOREIGN KEY (`tire_patch_id`) REFERENCES `tire_patches`(`id`) ON DELETE CASCADE
