@@ -2,11 +2,13 @@
 
 require __DIR__ . "/../Core/Model.php";
 
-class Account implements Model {
+class User implements Model {
     private $id;
     private $name;
     private $email;
     private $password;
+    private $created;
+    private $modified;
 
     public function getId() {
         return $this->id;
@@ -24,6 +26,14 @@ class Account implements Model {
         return $this->password;
     }
 
+    public function getCreated() {
+        return $this->created;
+    }
+
+    public function getModified() {
+        return $this->modified;
+    }
+
     public function setName($name) {
         $this->name = $name;
     }
@@ -34,6 +44,14 @@ class Account implements Model {
 
     public function setPassword($password) {
         $this->password = $password;
+    }
+
+    public function setCreated($created) {
+        $this->created = $created;
+    }
+
+    public function setModified($modified) {
+        $this->modified = $modified;
     }
 
     public function save() {
