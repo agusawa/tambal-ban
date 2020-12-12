@@ -4,7 +4,7 @@ require __DIR__ . "/../Core/Service.php";
 
 class UserService extends Service {
 	public static function findOneByEmail($email) {
-		$stmt = $this->connection->prepare("SELECT * FROM 'users' WHERE 'email' = ?");
+		$stmt = self::$connection->prepare("SELECT * FROM 'users' WHERE 'email' = ?");
 
 		$stmt->bind_param('s', $email);
 
@@ -13,9 +13,9 @@ class UserService extends Service {
 		return $stmt->get_result();
 	}
 
-	public function insert($user)
+	public static function insert($user)
 	{
-		$stmt = $this->connection->prepare("INSERT INTO 'users' ('name', 'email', 'password', 'created') VALUES (?, ?, ?, ?)");
+		$stmt = self::$connection->prepare("INSERT INTO 'users' ('name', 'email', 'password', 'created') VALUES (?, ?, ?, ?)");
 
 		$name = $user->getName();
         $email = $user->getEmail();
