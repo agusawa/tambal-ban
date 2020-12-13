@@ -6,7 +6,7 @@ class TirePatchService extends Service {
     
     public static function search($keyword) {
 
-        $stmt = $this->connection->prepare("SELECT * FROM 'tire_patches' WHERE 'address' = ?");
+        $stmt = self::$connection->prepare("SELECT * FROM 'tire_patches' WHERE 'address' = ?");
 
         $stmt->bind_param("s", $keyword);
 
