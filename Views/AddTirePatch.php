@@ -2,7 +2,8 @@
 
 require __DIR__ . "/../Core/View.php";
 
-class AddTirePatch extends View {
+class AddTirePatch extends View
+{
 	private $correctAccountId = "bengkelAnugrah";
 
 	protected $inputAccountId;
@@ -11,7 +12,8 @@ class AddTirePatch extends View {
 	protected $inputPicture;
 	protected $inputNoWhatsapp;
 
-	public function __construct($inputAccountId, $inputName, $inputDescription, $inputPicture, $inputNoWhatsapp) {
+	public function __construct($inputAccountId, $inputName, $inputDescription, $inputPicture, $inputNoWhatsapp)
+	{
 		// $this->inputAccountId = $inputAccountId;
 		// $this->inputName = $inputName;
 		// $this->inputDescription = $inputDescription;
@@ -20,7 +22,8 @@ class AddTirePatch extends View {
 		parent::__construct();
 	}
 
-	public function save() {
+	public function save()
+	{
 		if ($this->inputAccountId === $this->correctAccountId) {
 			echo "id sudah disimpan";
 		} else {
@@ -28,12 +31,13 @@ class AddTirePatch extends View {
 		}
 	}
 
-	protected function get() {
+	protected function get()
+	{
 		$this->render("AddTirePatch.php");
 	}
 
-	protected function post() {
-
+	protected function post()
+	{
 	}
 }
 

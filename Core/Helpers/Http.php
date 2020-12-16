@@ -1,13 +1,17 @@
 <?php
 
-trait OnlyHttpGet {
-	protected function post() {
+trait OnlyHttpGet
+{
+	protected function post()
+	{
 		$this->notFound();
 	}
 }
 
-trait OnlyHttpPost {
-	protected function get() {
+trait OnlyHttpPost
+{
+	protected function get()
+	{
 		$this->notFound();
 	}
 }

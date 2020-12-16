@@ -2,7 +2,8 @@
 
 require __DIR__ . "/../Core/View.php";
 
-class ChangeProfileInformation extends View {
+class ChangeProfileInformation extends View
+{
 	private $correctId = "abe43";
 	private $registeredEmail = "abe@example.com";
 
@@ -10,14 +11,16 @@ class ChangeProfileInformation extends View {
 	protected $inputEmail;
 	protected $inputName;
 
-	public function __construct($inputId, $inputEmail, $inputName) {
+	public function __construct($inputId, $inputEmail, $inputName)
+	{
 		// $this->inputEmail = $inputEmail;
 		// $this->inputId = $inputId;
 		// $this->inputName = $inputName;
 		parent::__construct();
 	}
 
-	public function isValidId() {
+	public function isValidId()
+	{
 		if ($this->inputId === $this->correctId) {
 			echo "that id have been used, please use another id. <br/>";
 		} else {
@@ -25,7 +28,8 @@ class ChangeProfileInformation extends View {
 		}
 	}
 
-	public function isRegisteredEmail() {
+	public function isRegisteredEmail()
+	{
 		if ($this->inputEmail === $this->registeredEmail) {
 			echo "that email have already use, please use another email. <br/>";
 		} else {
@@ -33,12 +37,13 @@ class ChangeProfileInformation extends View {
 		}
 	}
 
-	protected function get() {
+	protected function get()
+	{
 		$this->render("ChangeProfileInformation.php");
 	}
 
-	protected function post() {
-
+	protected function post()
+	{
 	}
 }
 

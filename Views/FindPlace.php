@@ -2,19 +2,22 @@
 
 require __DIR__ . "/../Core/View.php";
 
-class FindPlace extends View {
+class FindPlace extends View
+{
     // Dummy data for simulate available tire repair location.
     private $availableLocations = ["Gresik", "Surabaya", "Sidoarjo"];
     private $isLocationFound = false;
 
     protected $currentLocation;
 
-    public function __construct($currentLocation) {
+    public function __construct($currentLocation)
+    {
         // $this->currentLocation = $currentLocation;
         parent::__construct();
     }
 
-    public function check() {
+    public function check()
+    {
         foreach ($this->availableLocations as $availableLocation) {
             if ($this->currentLocation === $availableLocation) {
                 $this->isLocationFound = true;
@@ -24,7 +27,8 @@ class FindPlace extends View {
         $this->isFound();
     }
 
-    private function isFound() {
+    private function isFound()
+    {
         if ($this->isLocationFound) {
             echo "Ada tambal ban di lokasi ini.<br />";
         } else {
@@ -32,12 +36,13 @@ class FindPlace extends View {
         }
     }
 
-    protected function get() {
+    protected function get()
+    {
         $this->render("FindPlace.php");
     }
 
-    protected function post() {
-
+    protected function post()
+    {
     }
 }
 

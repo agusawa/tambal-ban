@@ -1,8 +1,7 @@
 <?php
 
-require __DIR__ . "/../Core/Model.php";
-
-class User implements Model {
+class User
+{
     private $id;
     private $name;
     private $email;
@@ -10,55 +9,58 @@ class User implements Model {
     private $created;
     private $modified;
 
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
 
-    public function getName() {
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function getEmail() {
+    public function getEmail()
+    {
         return $this->email;
     }
 
-    public function getPassword() {
+    public function getPassword()
+    {
         return $this->password;
     }
 
-    public function getCreated() {
+    public function getCreated()
+    {
         return $this->created;
     }
 
-    public function getModified() {
+    public function getModified()
+    {
         return $this->modified;
     }
 
-    public function setName($name) {
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
-    public function setEmail($email) {
+    public function setEmail($email)
+    {
         $this->email = $email;
     }
 
-    public function setPassword($password) {
+    public function setPassword($password)
+    {
         $this->password = $password;
     }
 
-    public function setCreated($created) {
+    public function setCreated($created)
+    {
         $this->created = $created;
     }
 
-    public function setModified($modified) {
+    public function setModified($modified)
+    {
         $this->modified = $modified;
-    }
-
-    public function save() {
-
-    } 
-
-    public static function delete($id) {
-
     }
 }

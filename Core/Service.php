@@ -2,10 +2,12 @@
 
 require __DIR__ . "/MySQL.php";
 
-class Service {
+class Service
+{
     protected static $connection;
 
-    public function __construct() {
+    public function __construct()
+    {
         $mysql = new MySQL();
         Service::$connection = $mysql->connection;
     }

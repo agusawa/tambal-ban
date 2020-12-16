@@ -2,18 +2,21 @@
 
 require __DIR__ . "/Request.php";
 
-abstract class View {
+abstract class View
+{
     protected $method;
     protected $request;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->method = $_SERVER['REQUEST_METHOD'];
         $this->request = new Request();
 
         $this->handle();
     }
 
-    private function handle() {
+    private function handle()
+    {
         switch ($this->method) {
             case "POST":
                 $this->post();
@@ -27,11 +30,13 @@ abstract class View {
     abstract protected function get();
     abstract protected function post();
 
-    protected function redirect($location) {
+    protected function redirect($location)
+    {
         header("Location: $location");
     }
 
-    protected function render($file, $extra = []) {
+    protected function render($file, $extra = [])
+    {
         foreach ($extra as $key => $value) {
             ${$key} = $value;
         }
@@ -39,7 +44,8 @@ abstract class View {
         require __DIR__ . "/../Templates/$file";
     }
 
-    protected function notFound() {
+    protected function notFound()
+    {
         $this->render("404.php");
     }
 }

@@ -2,19 +2,22 @@
 
 require __DIR__ . "/../Core/View.php";
 
-class ChangeProfileImage extends View {
+class ChangeProfileImage extends View
+{
     private $registeredId = "ara12";
 
     protected $inputId;
     protected $inputImage;
 
-    public function __construct($inputId, $inputImage) {
+    public function __construct($inputId, $inputImage)
+    {
         // $this->inputId = $inputId;
         // $this->inputImage = $inputImage;
         parent::__construct();
     }
 
-    public function isValidId() {
+    public function isValidId()
+    {
         if ($this->inputId === $this->registeredId) {
             return true;
         } else {
@@ -22,7 +25,8 @@ class ChangeProfileImage extends View {
         }
     }
 
-    public function save() {
+    public function save()
+    {
         if ($this->isValidId()) {
             echo "Gambar berhasil diubah";
         } else {
@@ -30,12 +34,13 @@ class ChangeProfileImage extends View {
         }
     }
 
-    public function get() {
+    public function get()
+    {
         $this->render("ChangeProfileImage.php");
     }
 
-    public function post() {
-
+    public function post()
+    {
     }
 }
 

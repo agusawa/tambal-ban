@@ -16,20 +16,23 @@
 
 require __DIR__ . "/../Core/View.php";
 
-class Signup extends View {
+class Signup extends View
+{
     protected $inputName;
     protected $inputEmail;
     protected $inputPassword;
     private $registeredEmail = "sara@gmail.com";
 
-    public function __construct($inputName, $inputEmail, $inputPassword) {
+    public function __construct($inputName, $inputEmail, $inputPassword)
+    {
         // $this->inputName = $inputName;
         // $this->inputEmail = $inputEmail;
         // $this->inputPassword = $inputPassword;
         parent::__construct();
     }
 
-    public function isRegisteredEmail() {
+    public function isRegisteredEmail()
+    {
         if ($this->inputEmail === $this->registeredEmail) {
             return true;
         } else {
@@ -37,7 +40,8 @@ class Signup extends View {
         }
     }
 
-    public function save() {
+    public function save()
+    {
         if ($this->isRegisteredEmail()) {
             echo "Maaf, Email telah terdaftar";
         } else {
@@ -45,12 +49,13 @@ class Signup extends View {
         }
     }
 
-    public function get() {
+    public function get()
+    {
         $this->render("Signup.php");
     }
 
-    public function post() {
-
+    public function post()
+    {
     }
 }
 

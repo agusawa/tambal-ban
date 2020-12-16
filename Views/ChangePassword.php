@@ -2,7 +2,8 @@
 
 require __DIR__ . "/../Core/View.php";
 
-class ChangePassword extends View {
+class ChangePassword extends View
+{
     private $correctId = "01375";
     private $correctOldPassword = "betulini27";
 
@@ -11,7 +12,8 @@ class ChangePassword extends View {
     protected $inputPassword1;
     protected $inputPassword2;
 
-    public function __construct($inputId, $inputOldPassword, $inputPassword1, $inputPassword2) {
+    public function __construct($inputId, $inputOldPassword, $inputPassword1, $inputPassword2)
+    {
         // $this->inputId = $inputId;
         // $this->inputOldPassword = $inputOldPassword;
         // $this->inputPassword1 = $inputPassword1;
@@ -20,7 +22,8 @@ class ChangePassword extends View {
         parent::__construct();
     }
 
-    public function isValidId() {
+    public function isValidId()
+    {
         if ($this->inputId === $this->correctId) {
             return true;
         } else {
@@ -28,7 +31,8 @@ class ChangePassword extends View {
         }
     }
 
-    public function isValidOldPassword() {
+    public function isValidOldPassword()
+    {
         if ($this->inputOldPassword === $this->correctOldPassword) {
             return true;
         } else {
@@ -36,7 +40,8 @@ class ChangePassword extends View {
         }
     }
 
-    public function isValidPassword() {
+    public function isValidPassword()
+    {
         if ($this->inputPassword1 === $this->inputPassword2) {
             return true;
         } else {
@@ -44,7 +49,8 @@ class ChangePassword extends View {
         }
     }
 
-    public function save() {
+    public function save()
+    {
         if (!$this->isValidId()) {
             echo "Id akun tidak valid";
         } else if (!$this->isValidOldPassword()) {
@@ -56,12 +62,13 @@ class ChangePassword extends View {
         }
     }
 
-    protected function get() {
+    protected function get()
+    {
         $this->render("ChangePassword.php");
     }
 
-    protected function post() {
-
+    protected function post()
+    {
     }
 }
 

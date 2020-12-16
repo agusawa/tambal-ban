@@ -1,8 +1,7 @@
 <?php
 
-require __DIR__ . "/../Core/Model.php";
-
-class TirePatch {
+class TirePatch
+{
 	private $id;
 	private $name;
 	private $description;
@@ -10,55 +9,58 @@ class TirePatch {
 	private $whatsapp;
 	private $accountId;
 
-	public function getId() {
+	public function getId()
+	{
 		return $this->id;
 	}
 
-	public function getName() {
+	public function getName()
+	{
 		return $this->name;
 	}
 
-	public function getDescription() {
+	public function getDescription()
+	{
 		return $this->description;
 	}
 
-	public function getAddress() {
+	public function getAddress()
+	{
 		return $this->address;
 	}
 
-	public function getWhatsapp() {
+	public function getWhatsapp()
+	{
 		return $this->whatsapp;
 	}
 
-	public function getAccountId() {
+	public function getAccountId()
+	{
 		return $this->accountId;
 	}
 
-	public function setName($name) {
+	public function setName($name)
+	{
 		$this->name = $name;
 	}
 
-	public function setDescription($description) {
+	public function setDescription($description)
+	{
 		$this->description = $description;
 	}
 
-	public function setAddress($address) {
+	public function setAddress($address)
+	{
 		$this->address = $address;
 	}
 
-	public function setWhatsapp($whatsapp) {
+	public function setWhatsapp($whatsapp)
+	{
 		$this->whatsapp = $whatsapp;
 	}
 
-	public function setAccountId($accountId) {
+	public function setAccountId($accountId)
+	{
 		$this->accountId = $accountId;
 	}
-
-    public function save() {
-
-    } 
-
-    public static function delete($id) {
-
-    }
 }
