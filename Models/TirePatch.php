@@ -3,13 +3,22 @@
 class TirePatch
 {
 	private $id;
+	private $userId;
 	private $name;
-	private $description;
 	private $address;
-	private $whatsapp;
-	private $accountId;
+	private $description;
+	private $picture;
+	private $whatsappNumber;
+	private $available;
+	private $created;
+	private $modified;
 
 	public function getId()
+	{
+		return $this->id;
+	}
+
+	public function getUserId()
 	{
 		return $this->id;
 	}
@@ -19,24 +28,44 @@ class TirePatch
 		return $this->name;
 	}
 
-	public function getDescription()
-	{
-		return $this->description;
-	}
-
 	public function getAddress()
 	{
 		return $this->address;
 	}
 
-	public function getWhatsapp()
+	public function getDescription()
 	{
-		return $this->whatsapp;
+		return $this->description;
 	}
 
-	public function getAccountId()
+	public function getPicture()
 	{
-		return $this->accountId;
+		return $this->picture;
+	}
+
+	public function getWhatsappNumber()
+	{
+		return $this->whatsappNumber;
+	}
+
+	public function getAvailable()
+	{
+		return $this->available;
+	}
+
+	public function getCreated()
+    {
+        return $this->created;
+    }
+
+    public function getModified()
+    {
+        return $this->modified;
+    }
+
+    public function setUserId($userId)
+	{
+		$this->userId = $userId;
 	}
 
 	public function setName($name)
@@ -44,23 +73,38 @@ class TirePatch
 		$this->name = $name;
 	}
 
-	public function setDescription($description)
-	{
-		$this->description = $description;
-	}
-
 	public function setAddress($address)
 	{
 		$this->address = $address;
 	}
 
-	public function setWhatsapp($whatsapp)
+	public function setDescription($description)
 	{
-		$this->whatsapp = $whatsapp;
+		$this->description = $description;
 	}
 
-	public function setAccountId($accountId)
+	public function setPicture($picture)
 	{
-		$this->accountId = $accountId;
+		$this->picture = $picture;
 	}
+
+	public function setWhatsappNumber($whatsappNumber)
+	{
+		$this->whatsappNumber = $whatsappNumber;
+	}
+
+	public function setAvailable($available)
+	{
+		$this->available = $available;
+	}
+
+	public function setCreated($created)
+    {
+        $this->created = $created;
+    }
+
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
+    }
 }
