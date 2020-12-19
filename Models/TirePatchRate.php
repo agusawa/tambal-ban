@@ -1,14 +1,14 @@
 <?php
 
-class tirePatchRates 
+class TirePatchRate
 {
-	private $id;
-	private $tirePatchId;
-	private $userId;
-	private $rate;
-	private $comment;
-	private $created;
-	private $modified;
+	protected $id;
+	protected $tirePatchId;
+	protected $userId;
+	protected $rate;
+	protected $comment;
+	protected $created;
+	protected $modified;
 
 	public function getId()
 	{
@@ -42,7 +42,7 @@ class tirePatchRates
 
 	public function getModified()
 	{
-		return $this->modifed;
+		return $this->modified;
 	}
 
 	public function setTirePatchId($tirePatchId)
@@ -62,7 +62,7 @@ class tirePatchRates
 
 	public function setComment($comment)
 	{
-		$this->comment = $rate;
+		$this->comment = $comment;
 	}
 	
 	public function setCreated($created)
