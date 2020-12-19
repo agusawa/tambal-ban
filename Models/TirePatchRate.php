@@ -1,6 +1,6 @@
 <?php
 
-class TirePatchRates 
+class TirePatchRate
 {
 	protected $id;
 	protected $tirePatchId;
