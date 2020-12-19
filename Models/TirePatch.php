@@ -2,16 +2,16 @@
 
 class TirePatch
 {
-	private $id;
-	private $userId;
-	private $name;
-	private $address;
-	private $description;
-	private $picture;
-	private $whatsappNumber;
-	private $available;
-	private $created;
-	private $modified;
+	protected $id;
+	protected $userId;
+	protected $name;
+	protected $address;
+	protected $description;
+	protected $picture;
+	protected $whatsappNumber;
+	protected $available;
+	protected $created;
+	protected $modified;
 
 	public function getId()
 	{
