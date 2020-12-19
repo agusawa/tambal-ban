@@ -20,7 +20,7 @@ class TirePatch
 
 	public function getUserId()
 	{
-		return $this->id;
+		return $this->userId;
 	}
 
 	public function getName()
