@@ -2,13 +2,13 @@
 
 class TirePatchRates 
 {
-	private $id;
-	private $tirePatchId;
-	private $userId;
-	private $rate;
-	private $comment;
-	private $created;
-	private $modified;
+	protected $id;
+	protected $tirePatchId;
+	protected $userId;
+	protected $rate;
+	protected $comment;
+	protected $created;
+	protected $modified;
 
 	public function getId()
 	{
