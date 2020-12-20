@@ -2,12 +2,12 @@
 
 class TirePatchFacility {
     
-    private $id;
-    private $tirePatchId;
-    private $name;
-    private $description;
-    private $created;
-    private $modified;
+    protected $id;
+    protected $tirePatchId;
+    protected $name;
+    protected $description;
+    protected $created;
+    protected $modified;
 
     public function getId()
     {
