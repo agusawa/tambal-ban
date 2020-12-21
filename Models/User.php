@@ -2,12 +2,12 @@
 
 class User
 {
-    private $id;
-    private $name;
-    private $email;
-    private $password;
-    private $created;
-    private $modified;
+    protected $id;
+    protected $name;
+    protected $email;
+    protected $password;
+    protected $created;
+    protected $modified;
 
     public function getId()
     {
