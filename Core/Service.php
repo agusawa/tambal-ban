@@ -4,11 +4,45 @@ require __DIR__ . "/MySQL.php";
 
 class Service
 {
-    protected static $connection;
+    /**
+     * MySQL connection.
+     *
+     * @var object
+     */
+    private static $connection;
 
-    public function __construct()
+    /**
+     * Get MySQL connection.
+     *
+     * @return object
+     */
+    protected static function getConnection()
+    {
+        if (!self::$connection) {
+            self::createConnection();
+        }
+
+        return self::$connection;
+    }
+
+    /**
+     * Create connection.
+     *
+     * @return void
+     */
+    private static function createConnection()
     {
         $mysql = new MySQL();
-        Service::$connection = $mysql->connection;
+        self::$connection = $mysql->connection;
+    }
+
+    /**
+     * Close MySQL connection.
+     *
+     * @return void
+     */
+    protected static function closeConnection()
+    {
+        self::getConnection()->close();
     }
 }
