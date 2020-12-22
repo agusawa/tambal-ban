@@ -1,72 +1,99 @@
 <?php
 
-class TirePatchFacility {
-    
-    protected $id;
-    protected $tirePatchId;
-    protected $name;
-    protected $description;
-    protected $created;
-    protected $modified;
+require __DIR__ . "/../Core/Model.php";
 
-    public function getId()
+if (!class_exists("TirePatchFacility")) {
+    class TirePatchFacility 
     {
-        return $this->id;
-    }
+        /**
+         * @var int
+         */
+        protected $id;
 
-    public function getTirePatchId()
-    {
-        return $this->tirePatchId;
-    }
+        /**
+         * @var int
+         */
+        protected $tirePatchId;
 
-    public function getName()
-    {
-        return $this->name;
-    }
+        /**
+         * @var string
+         */
+        protected $name;
 
-    public function getDescription()
-    {
-        return $this->description;
-    }
+        /**
+         * @var string
+         */
+        protected $description;
 
-    public function getCreated()
-    {
-        return $this->created;
-    }
+        /**
+         * @var int
+         */
+        protected $created;
 
-    public function getModified()
-    {
-        return $this->modified;
-    }
+        /**
+         * @var int
+         */
+        protected $modified;
 
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
+        public function getId()
+        {
+            return $this->id;
+        }
 
-    public function setTirePatchId($tirePatchId)
-    {
-        $this->tirePatchId = $tirePatchId;
-    }
+        public function getTirePatchId()
+        {
+            return $this->tirePatchId;
+        }
 
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
+        public function getName()
+        {
+            return $this->name;
+        }
 
-    public function setDescription($description)
-    {
-        $this->description = $description;
-    }
+        public function getDescription()
+        {
+            return $this->description;
+        }
 
-    public function setCreated($created)
-    {
-        $this->created = $created;
-    }
+        public function getCreated()
+        {
+            return $this->created;
+        }
 
-    public function setModified($modified)
-    {
-        $this->modified = $modified;
-    }
+        public function getModified()
+        {
+            return $this->modified;
+        }
 
+        public function setId($id)
+        {
+            $this->id = $id;
+        }
+
+        public function setTirePatchId($tirePatchId)
+        {
+            $this->tirePatchId = $tirePatchId;
+        }
+
+        public function setName($name)
+        {
+            $this->name = $name;
+        }
+
+        public function setDescription($description)
+        {
+            $this->description = $description;
+        }
+
+        public function setCreated($created)
+        {
+            $this->created = $created;
+        }
+
+        public function setModified($modified)
+        {
+            $this->modified = $modified;
+        }
+
+    }
 }
