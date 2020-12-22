@@ -6,15 +6,16 @@ class TirePatchService extends Service
 {
     public static function search($keyword)
     {
+        $keyword = "%$keyword%";
 
-        $stmt = self::$connection->prepare("SELECT * FROM 'tire_patches' WHERE 'address' = ?");
-
+        $stmt = static::getConnection()->prepare("SELECT * FROM 'tire_patches' WHERE 'address' = ?");
         $stmt->bind_param("s", $keyword);
-
         $stmt->execute();
 
-        return $stmt->get_result();
+        $result = $stmt->get_result();
+        $result = Arr::fetchAssoc($result);
+
+        return TirePatch::serializeMany($result);
     }
 }
-$keyword = 'contoh@example.com';
-var_dump(TirePatchService::search($email));
+

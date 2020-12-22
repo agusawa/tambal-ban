@@ -1,6 +1,8 @@
 <?php
 
-class TirePatch
+require __DIR__ . "/../Core/Model.php";
+
+class TirePatch extends Model
 {
 	protected $id;
 	protected $userId;
