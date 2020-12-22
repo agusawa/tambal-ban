@@ -1,7 +1,9 @@
 <?php
 
+require __DIR__ . "/../Core/Model.php";
+
 if (!class_exists("User")) {
-    class User
+    class User extends Model
     {
         /**
          * @var int
