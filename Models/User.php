@@ -1,66 +1,91 @@
 <?php
 
-class User
-{
-    protected $id;
-    protected $name;
-    protected $email;
-    protected $password;
-    protected $created;
-    protected $modified;
-
-    public function getId()
+if (!class_exists("User")) {
+    class User
     {
-        return $this->id;
-    }
+        /**
+         * @var int
+         */
+        protected $id;
 
-    public function getName()
-    {
-        return $this->name;
-    }
+        /**
+         * @var string
+         */
+        protected $name;
 
-    public function getEmail()
-    {
-        return $this->email;
-    }
+        /**
+         * @var string
+         */
+        protected $email;
 
-    public function getPassword()
-    {
-        return $this->password;
-    }
+        /**
+         * @var string
+         */
+        protected $password;
 
-    public function getCreated()
-    {
-        return $this->created;
-    }
+        /**
+         * @var int
+         */
+        protected $created;
 
-    public function getModified()
-    {
-        return $this->modified;
-    }
+        /**
+         * @var int
+         */
+        protected $modified;
 
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
+        public function getId()
+        {
+            return $this->id;
+        }
 
-    public function setEmail($email)
-    {
-        $this->email = $email;
-    }
+        public function getName()
+        {
+            return $this->name;
+        }
 
-    public function setPassword($password)
-    {
-        $this->password = $password;
-    }
+        public function getEmail()
+        {
+            return $this->email;
+        }
 
-    public function setCreated($created)
-    {
-        $this->created = $created;
-    }
+        public function getPassword()
+        {
+            return $this->password;
+        }
 
-    public function setModified($modified)
-    {
-        $this->modified = $modified;
+        public function getCreated()
+        {
+            return $this->created;
+        }
+
+        public function getModified()
+        {
+            return $this->modified;
+        }
+
+        public function setName($name)
+        {
+            $this->name = $name;
+        }
+
+        public function setEmail($email)
+        {
+            $this->email = $email;
+        }
+
+        public function setPassword($password)
+        {
+            $this->password = $password;
+        }
+
+        public function setCreated($created)
+        {
+            $this->created = $created;
+        }
+
+        public function setModified($modified)
+        {
+            $this->modified = $modified;
+        }
     }
 }
