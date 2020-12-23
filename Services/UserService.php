@@ -24,7 +24,7 @@ class UserService extends Service
 
     public static function insert($user)
     {
-        $stmt = self::$connection->prepare("INSERT INTO 'users' ('name', 'email', 'password', 'created') VALUES (?, ?, ?, ?)");
+        $stmt = static::getConnection()->prepare("INSERT INTO `users` (`name`, `email`, `password`, `created`) VALUES (?, ?, ?, ?)");
 
         $name = $user->getName();
         $email = $user->getEmail();
@@ -34,21 +34,20 @@ class UserService extends Service
         $stmt->bind_param("sssi", $name, $email, $password, $created);
 
         $process = $stmt->execute();
+        $stmt->close();
 
         // Jika proses sukses.
         if ($process) {
-            $stmt->close();
             return true;
         }
 
         // Jika proses gagal.
-        $stmt->close();
         return false;
     }
 
     public static function findOneById($id)
     {
-        $stmt = self::$connection->prepare("SELECT * FROM users WHERE `id` = ? LIMIT 1");
+        $stmt = self::getConnection()->prepare("SELECT * FROM users WHERE `id` = ? LIMIT 1");
         $stmt->bind_param("i", $id);
         $stmt->execute();
 
@@ -65,7 +64,7 @@ class UserService extends Service
 
         if (!$user) return false;
 
-        $stmt = self::$connection->prepare("DELETE users WHERE `id` = ? LIMIT 1");
+        $stmt = self::getConnection()->prepare("DELETE users WHERE `id` = ? LIMIT 1");
         $stmt->bind_param("i", $id);
         $process = $stmt->execute();
 
@@ -80,4 +79,7 @@ class UserService extends Service
         return false;
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> cedb756ba91e17fa4b27e930e151e2db14e9baaa
