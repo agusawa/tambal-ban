@@ -6,7 +6,7 @@ class UserService extends Service
 {
     public static function findOneByEmail($email)
     {
-        $stmt = static::getConnection()->prepare("SELECT * FROM 'users' WHERE 'email' = ? LIMIT 1");
+        $stmt = static::getConnection()->prepare("SELECT * FROM `users` WHERE `email` = ? LIMIT 1");
 
         $stmt->bind_param('s', $email);
         $stmt->execute();
