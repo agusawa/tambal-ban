@@ -1,6 +1,7 @@
 <?php
 
 require __DIR__ . "/../Core/Service.php";
+require __DIR__ . "/../Models/User.php";
 
 class UserService extends Service
 {
@@ -46,14 +47,16 @@ class UserService extends Service
 
     public static function findOneById($id)
     {
-        $stmt = self::getConnection()->prepare("SELECT * FROM users WHERE `id` = ? LIMIT 1");
+        $stmt = static::getConnection()->prepare("SELECT * FROM users WHERE `id` = ? LIMIT 1");
         $stmt->bind_param("i", $id);
         $stmt->execute();
 
-        $user = $stmt->get_result()[0];
-
+        $result = $stmt->get_result()->fetch_assoc();
         $stmt->close();
-        if ($user) return $user;
+
+        if ($result) {
+            return User::serialize($result);
+        }
         return null;
     }
 
@@ -66,15 +69,16 @@ class UserService extends Service
         $stmt = self::getConnection()->prepare("DELETE users WHERE `id` = ? LIMIT 1");
         $stmt->bind_param("i", $id);
         $process = $stmt->execute();
+        $stmt->close();
 
-        // Jika proses sukses.
         if ($process) {
-            $stmt->close();
             return true;
         }
 
-        // Jika proses gagal.
-        $stmt->close();
         return false;
     }
 }
+<<<<<<< HEAD
+
+=======
+>>>>>>> cedb756ba91e17fa4b27e930e151e2db14e9baaa
