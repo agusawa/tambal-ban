@@ -17,9 +17,9 @@
 	<?php endif ?>
 
 	<form action="" method="POST">
-		<input type="text" name="Name" placeholder="Name"> <br>
-		<input type="email" name="Email" placeholder="Email"> <br>
-		<input type="password" name="Password" placeholder="Password"> <br>
+		<input type="text" name="name" placeholder="name"> <br>
+		<input type="email" name="email" placeholder="email"> <br>
+		<input type="password" name="password" placeholder="password"> <br>
 		<button type="submit">Sign Up</button>
 	</form>
 </body>
