@@ -6,18 +6,24 @@ class UserService extends Service
 {
     public static function findOneByEmail($email)
     {
-        $stmt = self::$connection->prepare("SELECT * FROM 'users' WHERE 'email' = ?");
+        $stmt = static::getConnection()->prepare("SELECT * FROM 'users' WHERE 'email' = ? LIMIT 1");
 
         $stmt->bind_param('s', $email);
-
         $stmt->execute();
 
-        return $stmt->get_result();
+        $result = $stmt->get_result()->fetch_assoc();
+        $stmt->close();
+
+        if ($result) {
+            return User::serialize($result);
+        }
+
+        return null;
     }
 
     public static function insert($user)
     {
-        $stmt = self::$connection->prepare("INSERT INTO 'users' ('name', 'email', 'password', 'created') VALUES (?, ?, ?, ?)");
+        $stmt = self::getConnection()->prepare("INSERT INTO 'users' ('name', 'email', 'password', 'created') VALUES (?, ?, ?, ?)");
 
         $name = $user->getName();
         $email = $user->getEmail();
@@ -41,7 +47,7 @@ class UserService extends Service
 
     public static function findOneById($id)
     {
-        $stmt = self::$connection->prepare("SELECT * FROM users WHERE `id` = ? LIMIT 1");
+        $stmt = self::getConnection()->prepare("SELECT * FROM users WHERE `id` = ? LIMIT 1");
         $stmt->bind_param("i", $id);
         $stmt->execute();
 
@@ -58,7 +64,7 @@ class UserService extends Service
 
         if (!$user) return false;
 
-        $stmt = self::$connection->prepare("DELETE users WHERE `id` = ? LIMIT 1");
+        $stmt = self::getConnection()->prepare("DELETE users WHERE `id` = ? LIMIT 1");
         $stmt->bind_param("i", $id);
         $process = $stmt->execute();
 
