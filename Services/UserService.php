@@ -6,13 +6,19 @@ class UserService extends Service
 {
     public static function findOneByEmail($email)
     {
-        $stmt = self::getConnection()->prepare("SELECT * FROM 'users' WHERE 'email' = ?");
+        $stmt = static::getConnection()->prepare("SELECT * FROM 'users' WHERE 'email' = ? LIMIT 1");
 
         $stmt->bind_param('s', $email);
-
         $stmt->execute();
 
-        return $stmt->get_result();
+        $result = $stmt->get_result()->fetch_assoc();
+        $stmt->close();
+
+        if ($result) {
+            return User::serialize($result);
+        }
+
+        return null;
     }
 
     public static function insert($user)
