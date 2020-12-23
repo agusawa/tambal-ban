@@ -9,7 +9,7 @@
     <h1>Find Place</h1>
     
     <form action="">
-        <input type="text" name="keyword" value="<?= $request->param("keyword")?> placeholder="Search ...">
+        <input type="text" name="keyword" value="<?= $request->param("keyword")?>" placeholder="Search ...">
         <button type="submit">Search</button>
     </form>
 
@@ -17,13 +17,13 @@
         <tr>
             <th>Name</th>
             <th>Address</th>
-            <th>whatsaapNumber</th>
+            <th>WhatsappNumber</th>
         </tr>
-        <?php foreach ($tirepatches as $tirepatch); ?>
+        <?php foreach ($tirePatches as $tirepatch); ?>
         <tr>
-            <td><?= $tirepatch->$getName() ?></td>
-            <td><?= $tirepatch->$getAddress() ?></td>
-            <td><?= $tirepatch->$getwhatsaapNumber() ?></td>
+            <td><?= $tirepatch->getName() ?></td>
+            <td><?= $tirepatch->getAddress() ?></td>
+            <td><?= $tirepatch->getWhatsappNumber() ?></td>
         </tr>
     </table>
 </body>

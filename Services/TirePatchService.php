@@ -19,7 +19,7 @@ class TirePatchService extends Service
         
         $result = Arr::fetchAssoc($result);
 
-        return TirePatchService::serializeMany($result);
+        return TirePatch::serializeMany($result);
     }
 }
 
