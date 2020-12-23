@@ -1,6 +1,7 @@
 <?php
 
 require __DIR__ . "/../Core/Service.php";
+require __DIR__ . "/../Models/User.php";
 
 class UserService extends Service
 {
@@ -77,3 +78,7 @@ class UserService extends Service
         return false;
     }
 }
+<<<<<<< HEAD
+
+=======
+>>>>>>> cedb756ba91e17fa4b27e930e151e2db14e9baaa
