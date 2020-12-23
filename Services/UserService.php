@@ -23,7 +23,7 @@ class UserService extends Service
 
     public static function insert($user)
     {
-        $stmt = self::$connection->prepare("INSERT INTO 'users' ('name', 'email', 'password', 'created') VALUES (?, ?, ?, ?)");
+        $stmt = self::getConnection()->prepare("INSERT INTO 'users' ('name', 'email', 'password', 'created') VALUES (?, ?, ?, ?)");
 
         $name = $user->getName();
         $email = $user->getEmail();
@@ -47,7 +47,7 @@ class UserService extends Service
 
     public static function findOneById($id)
     {
-        $stmt = self::$connection->prepare("SELECT * FROM users WHERE `id` = ? LIMIT 1");
+        $stmt = self::getConnection()->prepare("SELECT * FROM users WHERE `id` = ? LIMIT 1");
         $stmt->bind_param("i", $id);
         $stmt->execute();
 
@@ -64,7 +64,7 @@ class UserService extends Service
 
         if (!$user) return false;
 
-        $stmt = self::$connection->prepare("DELETE users WHERE `id` = ? LIMIT 1");
+        $stmt = self::getConnection()->prepare("DELETE users WHERE `id` = ? LIMIT 1");
         $stmt->bind_param("i", $id);
         $process = $stmt->execute();
 
