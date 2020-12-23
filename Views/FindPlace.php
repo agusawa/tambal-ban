@@ -1,6 +1,7 @@
 <?php
 
 require __DIR__ . "/../Core/View.php";
+require __DIR__ . "/../Services/TirePatchService.php";
 require __DIR__ . "/../Core/Helpers/Http.php";
 
 class FindPlace extends View
@@ -9,7 +10,13 @@ class FindPlace extends View
     
     protected function get()
     {
-        $this->render("FindPlace.php");
+        $keyword = $this->request->param("keyword");
+        
+        $tirePatches = TirePatchService::search($keyword);
+
+        $this->render("FindPlace.php", [
+            "tirePatches" => $tirePatches
+        ]);
     }
 
 }
