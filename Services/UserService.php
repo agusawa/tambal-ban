@@ -6,7 +6,7 @@ class UserService extends Service
 {
     public static function findOneByEmail($email)
     {
-        $stmt = self::$connection->prepare("SELECT * FROM 'users' WHERE 'email' = ?");
+        $stmt = self::getConnection()->prepare("SELECT * FROM 'users' WHERE 'email' = ?");
 
         $stmt->bind_param('s', $email);
 
@@ -17,7 +17,7 @@ class UserService extends Service
 
     public static function insert($user)
     {
-        $stmt = self::$connection->prepare("INSERT INTO 'users' ('name', 'email', 'password', 'created') VALUES (?, ?, ?, ?)");
+        $stmt = self::getConnection()->prepare("INSERT INTO 'users' ('name', 'email', 'password', 'created') VALUES (?, ?, ?, ?)");
 
         $name = $user->getName();
         $email = $user->getEmail();
@@ -27,6 +27,7 @@ class UserService extends Service
         $stmt->bind_param("sssi", $name, $email, $password, $created);
 
         $process = $stmt->execute();
+        $stmt->close();
 
         // Jika proses sukses.
         if ($process) {
