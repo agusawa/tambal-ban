@@ -6,7 +6,7 @@ class UserService extends Service
 {
     public static function findOneByEmail($email)
     {
-        $stmt = static::getConnection()->prepare("SELECT * FROM 'users' WHERE 'email' = ? LIMIT 1");
+        $stmt = static::getConnection()->prepare("SELECT * FROM `users` WHERE `email` = ? LIMIT 1");
 
         $stmt->bind_param('s', $email);
         $stmt->execute();
@@ -23,7 +23,7 @@ class UserService extends Service
 
     public static function insert($user)
     {
-        $stmt = self::getConnection()->prepare("INSERT INTO 'users' ('name', 'email', 'password', 'created') VALUES (?, ?, ?, ?)");
+        $stmt = static::getConnection()->prepare("INSERT INTO `users` (`name`, `email`, `password`, `created`) VALUES (?, ?, ?, ?)");
 
         $name = $user->getName();
         $email = $user->getEmail();
@@ -33,15 +33,14 @@ class UserService extends Service
         $stmt->bind_param("sssi", $name, $email, $password, $created);
 
         $process = $stmt->execute();
+        $stmt->close();
 
         // Jika proses sukses.
         if ($process) {
-            $stmt->close();
             return true;
         }
 
         // Jika proses gagal.
-        $stmt->close();
         return false;
     }
 
@@ -79,25 +78,3 @@ class UserService extends Service
         return false;
     }
 }
-
-require __DIR__ . "/../Models/User.php";
-$user = new User();
-$user->setName("John Doe");
-$user->setEmail("johndoe@example.com");
-$user->setPassword("secret");
-$user->setCreated(time());
-
-$process = UserService::insert($user);
-
-// Jika proses sukses.
-if ($process) {
-    print_r("Process successful.");
-} else {
-    print_r("Process failure.\n");
-}
-
-$email = 'mari@example.com';
-var_dump(UserService::findOneByEmail($email));
-
-$id = 1;
-var_dump(UserService::delete($id));
