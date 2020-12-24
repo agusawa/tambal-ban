@@ -28,9 +28,9 @@ class Signup extends View
         $process = UserService::insert($user);
 
         if ($process) {
-            Session::setSuccess("Sign Up Sukses");
+            Session::setSuccess("Successfully registered");
         } else {
-            Session::setError("Sign Up Gagal");
+            Session::setError("Email has been registered. Please use another email");
         }
 
         $this->get();
