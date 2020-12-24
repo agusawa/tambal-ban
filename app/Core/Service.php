@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . "/MySQL.php";
+require __DIR__ . "/../Core/MySQL.php";
 
 class Service
 {
