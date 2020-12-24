@@ -9,15 +9,19 @@
 // class login (input) --> use a class validation for checking name, email and token (proses) --> main menu (output)
 
 class ActivateAccount {
-
-	public function activate() {
-		$available_email = 'abcd99@gmail.com';
-		$new_email = 'sayariri1@gmail.com';
-        $available_token = '01ABCD';
-        $new_token = '12ASLI';
-        
-        
-		if ($new_email === $available_email AND $new_token === $available_token) {
+	private $availableEmail = 'abcd99@gmail.com';
+    private $availableToken = '01ABCD';
+    
+    protected $inputEmail;
+    protected $inputToken;
+    
+	public function __construct($inputEmail, $inputToken) {
+		$this->inputEmail = $inputEmail;
+		$this->inputToken = $inputToken;
+    }
+    
+    public function isValid() {
+		if ($this->inputEmail === $this->availableEmail AND $this->inputToken === $this->availableToken) {
 			echo "Sukses";
 		} else {
 			echo "Gagal";
@@ -25,5 +29,9 @@ class ActivateAccount {
     }
 }
 
-$activate_account = new ActivateAccount();
-$activate_account->activate();
+$inputEmail = "abcd99@gmail.com";
+$inputToken = "01ABCD";
+
+$activateAccount = new ActivateAccount($inputEmail, $inputToken);
+$activateAccount->isValid();
+?> 
