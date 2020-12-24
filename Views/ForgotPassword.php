@@ -6,18 +6,21 @@
 // password status --> return boolean ==> change password or not
 // input new password --> function ==> input new password 
 
-class ForgotPassword {
+class ForgotPassword
+{
     protected $email;
     protected $newEmail;
 
     private $availableEmail = "ikanuril@gmail.com";
 
-    public function __construct($email, $newEmail) {
+    public function __construct($email, $newEmail)
+    {
         $this->email = $email;
         $this->newEmail = $newEmail;
     }
-    
-    public function send() {
+
+    public function send()
+    {
         if ($this->email === $this->availableEmail) {
             echo "Login Success";
         } else {

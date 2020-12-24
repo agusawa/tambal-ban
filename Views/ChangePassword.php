@@ -1,45 +1,56 @@
 <?php
-class ChangePassword {
+
+require __DIR__ . "/../Core/View.php";
+
+class ChangePassword extends View
+{
     private $correctId = "01375";
     private $correctOldPassword = "betulini27";
-    
+
     protected $inputId;
     protected $inputOldPassword;
     protected $inputPassword1;
     protected $inputPassword2;
-    
-    public function __construct($inputId, $inputOldPassword, $inputPassword1, $inputPassword2) {
-        $this->inputId = $inputId;
-        $this->inputOldPassword = $inputOldPassword;
-        $this->inputPassword1 = $inputPassword1;
-        $this->inputPassword2 = $inputPassword2;
+
+    public function __construct($inputId, $inputOldPassword, $inputPassword1, $inputPassword2)
+    {
+        // $this->inputId = $inputId;
+        // $this->inputOldPassword = $inputOldPassword;
+        // $this->inputPassword1 = $inputPassword1;
+        // $this->inputPassword2 = $inputPassword2;
+
+        parent::__construct();
     }
-    
-    public function isValidId() {
+
+    public function isValidId()
+    {
         if ($this->inputId === $this->correctId) {
             return true;
         } else {
             return false;
         }
     }
-         
-    public function isValidOldPassword() {
+
+    public function isValidOldPassword()
+    {
         if ($this->inputOldPassword === $this->correctOldPassword) {
             return true;
         } else {
             return false;
         }
     }
-     
-    public function isValidPassword () {
+
+    public function isValidPassword()
+    {
         if ($this->inputPassword1 === $this->inputPassword2) {
             return true;
         } else {
             return false;
         }
     }
-     
-    public function save() {
+
+    public function save()
+    {
         if (!$this->isValidId()) {
             echo "Id akun tidak valid";
         } else if (!$this->isValidOldPassword()) {
@@ -51,10 +62,13 @@ class ChangePassword {
         }
     }
 
-    protected function get() {
+    protected function get()
+    {
+        $this->render("ChangePassword.php");
     }
 
-    protected function post() {     
+    protected function post()
+    {
     }
 }
 
@@ -64,5 +78,4 @@ $inputPassword1 = "aqs12345";
 $inputPassword2 = "aqs12345";
 
 $changePassword = new ChangePassword($inputId, $inputOldPassword, $inputPassword1, $inputPassword2);
-$changePassword->save();
-?>
+// $changePassword->save();
