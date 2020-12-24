@@ -16,7 +16,7 @@ if(!class_exists("Str")) {
         
         public static function snakeToCamelCase($string)
         {
-            $str = str_replace(" ", "", ucwords(str_replace(" ", "", $string)));
+            $str = str_replace(" ", "", ucwords(str_replace("_", " ", $string)));
             $str[0] = strtolower($str[0]);
             return $str;
         }

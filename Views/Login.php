@@ -1,40 +1,13 @@
 <?php
 
+require __DIR__ . "/../Core/Helpers/Session.php";
 require __DIR__ . "/../Core/View.php";
+require __DIR__ . "/../Core/Helpers/Hash.php";
+require __DIR__ . "/../Services/UserService.php";
 
 class Login extends View
 {
-	private $correctEmail = "peter@example.com";
-	private $correctPassword = "peter1234";
-
-	protected $inputEmail;
-	protected $inputPassword;
-
-	public function __construct($inputEmail, $inputPassword)
-	{
-		// 	$this->inputEmail = $inputEmail;
-		// 	$this->inputPassword = $inputPassword;
-		parent::__construct();
-	}
-
-	public function isValid()
-	{
-		if ($this->inputEmail === $this->correctEmail and $this->inputPassword === $this->correctPassword) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	public function save()
-	{
-		if ($this->isValid()) {
-			echo "Login succesful";
-		} else {
-			echo "wrong password or email";
-		}
-	}
-
+	
 	protected function get()
 	{
 		$this->render("Login.php");
@@ -42,11 +15,21 @@ class Login extends View
 
 	protected function post()
 	{
+		$email = $this->request->input("email");
+		$password = $this->request->input("password");
+
+		$user = UserService::findOneByEmail($email);
+
+		if ($user && Hash::check($password, $user->getPassword())) {
+			Session::setSuccess("Login sukses!");
+		} else {
+			Session::setError("email atau password tidak sesuai");
+
+			$this->get();
+		}
+
+		$this->render("Login.php");
 	}
 }
 
-$inputEmail = "peter@example.com";
-$inputPassword = "peter1234";
-
-$login = new Login($inputEmail, $inputPassword);
-// $login ->isValid();
+new Login();

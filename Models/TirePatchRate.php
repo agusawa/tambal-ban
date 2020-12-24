@@ -1,77 +1,108 @@
 <?php
 
-class TirePatchRate
+require __DIR__ . "/../Core/Model.php";
+
+if(!class_exists("TirePatchRate")) {
+	class TirePatchRate extends Model
 {
-	protected $id;
-	protected $tirePatchId;
-	protected $userId;
-	protected $rate;
-	protected $comment;
-	protected $created;
-	protected $modified;
+		/**
+	 	* @var int
+	 	*/
+		protected $id;
 
-	public function getId()
-	{
-		return $this->id;
-	}
+		/**
+		 * @var int
+		 */
+		protected $tirePatchId;
 
-	public function getTirePatchId()
-	{
-		return $this->tirePatchId;
-	}
+		/**
+		 * @var int
+	 	*/
+		protected $userId;
 
-	public function getUserId()
-	{
-		return $this->userId;
-	}
+		/**
+	 	* @var int
+		 */
+		protected $rate;
 
-	public function getRate()
-	{
-		return $this->rate;
-	}
+		/**
+		 * @var string
+		 */
+		protected $comment;
 
-	public function getComment()
-	{
-		return $this->comment;
-	}
+		/**
+		 * @var int
+		 */
+		protected $created;
 
-	public function getCreated()
-	{
-		return $this->created;
-	}
+		/**
+		 * @var int
+		 */
+		protected $modified;
 
-	public function getModified()
-	{
-		return $this->modified;
-	}
+		public function getId()
+		{
+			return $this->id;
+		}
 
-	public function setTirePatchId($tirePatchId)
-	{
-		$this->tirePatchId = $tirePatchId;
-	}
+		public function getTirePatchId()
+		{
+			return $this->tirePatchId;
+		}
 
-	public function setUserId($userId)
-	{
-		$this->userId = $userId;
-	}
+		public function getUserId()
+		{
+			return $this->userId;
+		}
 
-	public function setRate($rate)
-	{
-		$this->rate = $rate;
-	}
+		public function getRate()
+		{
+			return $this->rate;
+		}
 
-	public function setComment($comment)
-	{
-		$this->comment = $comment;
-	}
+		public function getComment()
+		{
+			return $this->comment;
+		}
+
+		public function getCreated()
+		{
+			return $this->created;
+		}
+
+		public function getModified()
+		{
+			return $this->modified;
+		}	
+
+		public function setTirePatchId($tirePatchId)
+		{
+			$this->tirePatchId = $tirePatchId;
+		}
+
+		public function setUserId($userId)
+		{
+			$this->userId = $userId;
+		}
+
+		public function setRate($rate)
+		{
+			$this->rate = $rate;
+		}
+
+		public function setComment($comment)
+		{
+			$this->comment = $comment;
+		}
 	
-	public function setCreated($created)
-	{
-		$this->created = $created;
-	}
+		public function setCreated($created)
+		{
+			$this->created = $created;
+		}
 
-	public function setModified($modified)
-	{
-		$this->modified = $modified;
+		public function setModified($modified)
+		{
+			$this->modified = $modified;
+		}
 	}
 }

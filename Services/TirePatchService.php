@@ -1,20 +1,25 @@
 <?php
 
 require __DIR__ . "/../Core/Service.php";
+require __DIR__ . "/../Core/Helpers/Arr.php";
+require __DIR__ . "/../Models/TirePatch.php";
 
 class TirePatchService extends Service
 {
     public static function search($keyword)
     {
+        $keyword = "%$keyword%";
 
-        $stmt = self::$connection->prepare("SELECT * FROM 'tire_patches' WHERE 'address' = ?");
-
+        $stmt = static::getConnection()->prepare("SELECT * FROM `tire_patches` WHERE `address` LIKE ?");
         $stmt->bind_param("s", $keyword);
-
         $stmt->execute();
 
-        return $stmt->get_result();
+        $result = $stmt->get_result();
+        $stmt->close();
+        
+        $result = Arr::fetchAssoc($result);
+
+        return TirePatch::serializeMany($result);
     }
 }
-$keyword = 'contoh@example.com';
-var_dump(TirePatchService::search($email));
+
