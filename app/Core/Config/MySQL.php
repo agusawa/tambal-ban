@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . "/../Core/DatabaseConfiguration.php";
+require_once __DIR__ . "/../Core/DatabaseConfiguration.php";
 
 class MySQL
 {

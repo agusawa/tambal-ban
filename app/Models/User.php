@@ -1,93 +1,91 @@
 <?php
 
-require __DIR__ . "/../Core/Model.php";
+require_once __DIR__ . "/../Core/Model.php";
 
-if (!class_exists("User")) {
-    class User extends Model
+class User extends Model
+{
+    /**
+     * @var int
+     */
+    protected $id;
+
+    /**
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * @var string
+     */
+    protected $email;
+
+    /**
+     * @var string
+     */
+    protected $password;
+
+    /**
+     * @var int
+     */
+    protected $created;
+
+    /**
+     * @var int
+     */
+    protected $modified;
+
+    public function getId()
     {
-        /**
-         * @var int
-         */
-        protected $id;
+        return $this->id;
+    }
 
-        /**
-         * @var string
-         */
-        protected $name;
+    public function getName()
+    {
+        return $this->name;
+    }
 
-        /**
-         * @var string
-         */
-        protected $email;
+    public function getEmail()
+    {
+        return $this->email;
+    }
 
-        /**
-         * @var string
-         */
-        protected $password;
+    public function getPassword()
+    {
+        return $this->password;
+    }
 
-        /**
-         * @var int
-         */
-        protected $created;
+    public function getCreated()
+    {
+        return $this->created;
+    }
 
-        /**
-         * @var int
-         */
-        protected $modified;
+    public function getModified()
+    {
+        return $this->modified;
+    }
 
-        public function getId()
-        {
-            return $this->id;
-        }
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
 
-        public function getName()
-        {
-            return $this->name;
-        }
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
 
-        public function getEmail()
-        {
-            return $this->email;
-        }
+    public function setPassword($password)
+    {
+        $this->password = $password;
+    }
 
-        public function getPassword()
-        {
-            return $this->password;
-        }
+    public function setCreated($created)
+    {
+        $this->created = $created;
+    }
 
-        public function getCreated()
-        {
-            return $this->created;
-        }
-
-        public function getModified()
-        {
-            return $this->modified;
-        }
-
-        public function setName($name)
-        {
-            $this->name = $name;
-        }
-
-        public function setEmail($email)
-        {
-            $this->email = $email;
-        }
-
-        public function setPassword($password)
-        {
-            $this->password = $password;
-        }
-
-        public function setCreated($created)
-        {
-            $this->created = $created;
-        }
-
-        public function setModified($modified)
-        {
-            $this->modified = $modified;
-        }
+    public function setModified($modified)
+    {
+        $this->modified = $modified;
     }
 }

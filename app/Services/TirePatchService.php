@@ -1,8 +1,8 @@
 <?php
 
-require __DIR__ . "/../Core/Service.php";
-require __DIR__ . "/../Core/Helpers/Arr.php";
-require __DIR__ . "/../Models/TirePatch.php";
+require_once __DIR__ . "/../Core/Service.php";
+require_once __DIR__ . "/../Core/Helpers/Arr.php";
+require_once __DIR__ . "/../Models/TirePatch.php";
 
 class TirePatchService extends Service
 {

@@ -8,7 +8,7 @@
 // class registration (input) --> checking name and email use a class validation then, use a class activation (proses) --> store name, email and token in cookies/txt/database (output)
 // class login (input) --> use a class validation for checking name, email and token (proses) --> main menu (output)
 
-require __DIR__ . "/../Core/View.php";
+require_once __DIR__ . "/../Core/View.php";
 
 class ActivateAccount extends View
 {

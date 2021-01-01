@@ -1,8 +1,8 @@
 <?php
 
-require __DIR__ . "/../Core/View.php";
-require __DIR__ . "/../Services/TirePatchService.php";
-require __DIR__ . "/../Core/Helpers/Http.php";
+require_once __DIR__ . "/../Core/View.php";
+require_once __DIR__ . "/../Services/TirePatchService.php";
+require_once __DIR__ . "/../Core/Helpers/Http.php";
 
 class FindPlace extends View
 {

@@ -1,7 +1,7 @@
 <?php
 
-require __DIR__ . "/../Core/Service.php";
-require __DIR__ . "/../Models/User.php";
+require_once __DIR__ . "/../Core/Service.php";
+require_once __DIR__ . "/../Models/User.php";
 
 class UserService extends Service
 {

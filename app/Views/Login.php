@@ -1,9 +1,9 @@
 <?php
 
-require __DIR__ . "/../Core/Helpers/Session.php";
-require __DIR__ . "/../Core/View.php";
-require __DIR__ . "/../Core/Helpers/Hash.php";
-require __DIR__ . "/../Services/UserService.php";
+require_once __DIR__ . "/../Core/Helpers/Session.php";
+require_once __DIR__ . "/../Core/View.php";
+require_once __DIR__ . "/../Core/Helpers/Hash.php";
+require_once __DIR__ . "/../Services/UserService.php";
 
 class Login extends View
 {

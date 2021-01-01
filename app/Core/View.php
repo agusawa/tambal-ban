@@ -1,7 +1,7 @@
 <?php
 
-require __DIR__ . "/Helpers/Session.php";
-require __DIR__ . "/Helpers/Request.php";
+require_once __DIR__ . "/Helpers/Session.php";
+require_once __DIR__ . "/Helpers/Request.php";
 
 abstract class View
 {
@@ -101,7 +101,7 @@ abstract class View
             ${$key} = $value;
         }
 
-        require __DIR__ . "/../Templates/$file";
+        require_once __DIR__ . "/../Templates/$file";
     }
 
     /**
