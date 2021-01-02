@@ -1,49 +1,36 @@
 <?php
 
-require_once __DIR__ . "/../Core/DatabaseConfiguration.php";
-
 class MySQL
 {
-    use DatabaseConfiguration;
-
     /**
      * MySQL connection.
      * 
      * @var object
      */
-    public $connection = null;
-
-    /**
-     * Is database connected successfully or not.
-     * 
-     * @var boolean
-     */
-    public $status = false;
+    private static $connection = null;
 
     /**
      * An error messege will appear if the database has an error.
      * 
      * @var string
      */
-    public $errorMessage = null;
-
-    /**
-     * Constractor.
-     */
-    public function __construct()
-    {
-        $this->createConnection();
-    }
+    private static $errorMessage = null;
 
     /**
      * Create database connection.
      * 
      * @return void
      */
-    private function createConnection()
+    public static function createConnection()
     {
-        $this->connection = new mysqli($this->HOSTNAME, $this->USERNAME, $this->PASSWORD, $this->DBNAME, $this->PORT);
-        $this->checkConnection();
+        self::$connection = new mysqli(
+            getenv("MYSQL_HOSTNAME"),
+            getenv("MYSQL_USERNAME"),
+            getenv("MYSQL_PASSWORD"),
+            getenv("MYSQL_DBNAME"),
+            getenv("MYSQL_PORT")
+        );
+        self::checkConnection();
     }
 
     /**
@@ -51,14 +38,21 @@ class MySQL
      * 
      * @return void
      */
-    private function checkConnection()
+    public static function checkConnection()
     {
-        if ($this->connection->connect_error) {
-            $this->status = false;
-            $this->errorMessage = $this->connection->connect_error;
-        } else {
-            $this->status = true;
+        if (self::$connection->connect_error) {
+            self::$errorMessage = self::$connection->connect_error;
         }
+    }
+
+    public static function hasError()
+    {
+        return self::$errorMessage !== null;
+    }
+
+    public static function getError()
+    {
+        return self::$errorMessage;
     }
 
     /**
@@ -66,10 +60,15 @@ class MySQL
      * 
      * @return void
      */
-    public function close()
+    public static function closeConnection()
     {
-        if ($this->connection) {
-            $this->connection->close();
+        if (self::$connection) {
+            self::$connection->close();
         }
+    }
+
+    public static function getConnection()
+    {
+        return self::$connection;
     }
 }

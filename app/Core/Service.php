@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . "/../Core/MySQL.php";
+require_once __DIR__ . "/Config/MySQL.php";
 
-class Service
+abstract class Service
 {
     /**
      * MySQL connection.
@@ -19,30 +19,9 @@ class Service
     protected static function getConnection()
     {
         if (!self::$connection) {
-            self::createConnection();
+            self::$connection = MySQL::getConnection();
         }
 
         return self::$connection;
-    }
-
-    /**
-     * Create connection.
-     *
-     * @return void
-     */
-    private static function createConnection()
-    {
-        $mysql = new MySQL();
-        self::$connection = $mysql->connection;
-    }
-
-    /**
-     * Close MySQL connection.
-     *
-     * @return void
-     */
-    protected static function closeConnection()
-    {
-        self::getConnection()->close();
     }
 }
