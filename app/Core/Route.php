@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . "/Contracts/Bootable.php";
+require_once __DIR__ . "/Contracts/Bootable.php";
 
 class Route implements Bootable
 {
