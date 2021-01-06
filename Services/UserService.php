@@ -78,7 +78,3 @@ class UserService extends Service
         return false;
     }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> cedb756ba91e17fa4b27e930e151e2db14e9baaa
