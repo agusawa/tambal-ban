@@ -20,7 +20,7 @@ class AuthController extends Controller
 		$user = UserService::findOneByEmail($email);
 
 		if ($user && Hash::check($password, $user->getPassword())) {
-			Session::setSuccess("Login sukses!");
+			Session::setSuccess("login sukses!");
 		} else {
 			Session::setError("email atau password tidak sesuai");
 		}
