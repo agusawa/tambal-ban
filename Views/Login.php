@@ -24,8 +24,6 @@ class Login extends View
 			Session::setSuccess("Login sukses!");
 		} else {
 			Session::setError("email atau password tidak sesuai");
-
-			$this->get();
 		}
 
 		$this->render("Login.php");
