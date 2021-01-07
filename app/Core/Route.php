@@ -31,7 +31,7 @@ class Route implements Bootable
     public function __construct()
     {
         $this->httpMethod = $_SERVER["REQUEST_METHOD"];
-        $this->currentPath = trim($_SERVER["PATH_INFO"] ?? "", "/");
+        $this->currentPath = trim($_SERVER["PATH_INFO"] ?? $_GET["path"], "/");
     }
 
     /**
