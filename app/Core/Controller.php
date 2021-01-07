@@ -46,7 +46,7 @@ abstract class Controller
      * Redirect to URL location.
      *
      * @param string $location
-     * @return void
+     * @return void 
      */
     protected function redirect($location)
     {

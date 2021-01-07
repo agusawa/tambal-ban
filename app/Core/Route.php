@@ -63,7 +63,7 @@ class Route implements Bootable
     /**
      * Get the route data according to the method and the path.
      *
-     * @return void
+     * @return array
      */
     private function getSelectedRoute()
     {

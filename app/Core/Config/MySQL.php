@@ -38,7 +38,7 @@ class MySQL
      * 
      * @return void
      */
-    public static function checkConnection()
+    private static function checkConnection()
     {
         if (self::$connection->connect_error) {
             self::$errorMessage = self::$connection->connect_error;
