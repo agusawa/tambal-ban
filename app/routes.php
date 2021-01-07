@@ -15,3 +15,6 @@ $route = new Route();
 */
 
 $route->get("/", "HomeController@index");
+
+$route->get("/signup", "AuthController@signUp");
+$route->post("/signup", "AuthController@signUpProcess");
