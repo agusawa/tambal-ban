@@ -15,3 +15,5 @@ $route = new Route();
 */
 
 $route->get("/", "HomeController@index");
+
+$route->get("/find", "HomeController@find");
