@@ -24,8 +24,8 @@ session_start();
 |
 */
 
-$path = $_SERVER["PATH_INFO"] ?? $_GET["path"];
-$url = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["REQUEST_URI"];
+$path = isset($_GET["path"]) ? $_GET["path"] : $_SERVER["PATH_INFO"];
+$url = "http://" . $_SERVER["SERVER_NAME"] . ":" . $_SERVER["SERVER_PORT"] . $_SERVER["REQUEST_URI"];
 
 define("BASE_URL", rtrim($url, $path));
 
