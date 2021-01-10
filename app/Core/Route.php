@@ -1,9 +1,10 @@
 <?php
 
 require_once __DIR__ . "/Contracts/Bootable.php";
+require_once __DIR__ . "/Contracts/Route.php";
 require_once __DIR__ . "/Helpers/Auth.php";
 
-class Route implements Bootable
+class Route implements Bootable, RouteImp
 {
     /**
      * The path to the "login" route for the application. This is used by
