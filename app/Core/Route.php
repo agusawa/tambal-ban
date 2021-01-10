@@ -1,9 +1,26 @@
 <?php
 
 require_once __DIR__ . "/Contracts/Bootable.php";
+require_once __DIR__ . "/Helpers/Auth.php";
 
 class Route implements Bootable
 {
+    /**
+     * The path to the "login" route for the application. This is used by
+     * isValidAccess method to redirect if the user has not already logged in.
+     *
+     * @var string
+     */
+    public const LOGIN_PATH = "/login";
+
+    /**
+     * The path to the "home" route for the application. This is used by
+     * isValidAccess method to redirect if the user has already logged in.
+     *
+     * @var string
+     */
+    public const HOME_PATH = "/";
+
     /**
      * Path of current location.
      *
@@ -86,12 +103,49 @@ class Route implements Bootable
     {
         $route = $this->getSelectedRoute();
 
-        if ($route !== null) {
+        if ($route === null) {
+            http_response_code(404);
+            return;
+        }
+
+        if ($this->isValidAccessType($route)) {
             $this->callController($route["controller"]);
             return;
         }
 
-        http_response_code(404);
+        if ($route["authenticated"]) {
+            $this->redirect(Route::LOGIN_PATH);
+        } else {
+            $this->redirect(Route::HOME_PATH);
+        }
+    }
+
+    /**
+     * Check whether the route is authentically accessible, guest only, or both.
+     *
+     * @param array $route
+     * @return boolean
+     */
+    private function isValidAccessType($route)
+    {
+        if ($route["authenticated"]) {
+            return Auth::check();
+        } else if ($route["guest"]) {
+            return !Auth::check();
+        }
+
+        return true;
+    }
+
+    /**
+     * Redirect to URL location.
+     *
+     * @param string $location
+     * @return void
+     */
+    private function redirect($location)
+    {
+        Header("Location: " . BASE_URL . $location);
     }
 
     /**
@@ -110,7 +164,8 @@ class Route implements Bootable
             "method" => $method,
             "path" => $trimmedPath,
             "controller" => $controller,
-            "middleware" => null,
+            "authenticated" => false,
+            "guest" => false,
         ];
     }
 
@@ -119,11 +174,12 @@ class Route implements Bootable
      *
      * @param string $path
      * @param string $controller
-     * @return void
+     * @return $this
      */
     public function get($path, $controller)
     {
         $this->registerRoute("GET", $path, $controller);
+        return $this;
     }
 
     /**
@@ -131,10 +187,33 @@ class Route implements Bootable
      *
      * @param string $path
      * @param string $controller
-     * @return void
+     * @return $this
      */
     public function post($path, $controller)
     {
         $this->registerRoute("POST", $path, $controller);
+        return $this;
+    }
+
+    /**
+     * Specifies that the route is only accessible when the user is logged in.
+     *
+     * @return void
+     */
+    public function authenticated()
+    {
+        $lastIndex = array_key_last($this->routes);
+        $this->routes[$lastIndex]["authenticated"] = true;
+    }
+
+    /**
+     * 
+     *
+     * @return void
+     */
+    public function guest()
+    {
+        $lastIndex = array_key_last($this->routes);
+        $this->routes[$lastIndex]["guest"] = true;
     }
 }

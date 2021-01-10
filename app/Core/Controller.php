@@ -62,6 +62,9 @@ abstract class Controller
      */
     protected function render($file, $extra = [])
     {
+        // So that the Auth class can be used in views.
+        require_once __DIR__ . "/Helpers/Auth.php";
+
         $extraVariables = array_merge($this->getDefaultExtraVariable(), $extra);
 
         foreach ($extraVariables as $key => $value) {
