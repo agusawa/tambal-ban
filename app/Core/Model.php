@@ -1,8 +1,9 @@
 <?php
 
 require_once __DIR__ . "/Helpers/Str.php";
+require_once __DIR__ . "/Contracts/Model.php";
 
-abstract class Model
+abstract class Model implements ModelImp
 {
     /**
      * Convert associative array to model class.

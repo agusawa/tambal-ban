@@ -1,9 +1,10 @@
 <?php
 
 require_once __DIR__ . "/Helpers/Request.php";
+require_once __DIR__ . "/Contracts/Controller.php";
 require_once __DIR__ . "/Helpers/Session.php";
 
-abstract class Controller
+abstract class Controller implements ControllerImp
 {
     /**
      * Method of request, GET or POST.

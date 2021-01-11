@@ -1,8 +1,9 @@
 <?php
 
 require_once __DIR__ . "/Config/MySQL.php";
+require_once __DIR__ . "/Contracts/Application.php";
 
-class Application
+class Application implements ApplicationImp
 {
     /**
      * The service will be called when the application is run. The registered

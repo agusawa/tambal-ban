@@ -1,8 +1,9 @@
 <?php
 
 require_once __DIR__ . "/Config/MySQL.php";
+require_once __DIR__ . "/Contracts/Service.php";
 
-abstract class Service
+abstract class Service implements ServiceImp
 {
     /**
      * MySQL connection.
