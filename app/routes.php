@@ -15,9 +15,10 @@ $route = new Route();
 */
 
 $route->get("/", "HomeController@index");
-
-$route->get("/signup", "AuthController@signUp");
-$route->post("/signup", "AuthController@signUpProcess");
-$route->get("/login", "AuthController@login");
-$route->post("/login", "AuthController@loginProcess");
 $route->get("/find", "HomeController@find");
+
+$route->get("/signup", "AuthController@signUp")->guest();
+$route->post("/signup", "AuthController@signUpProcess")->guest();
+$route->get("/login", "AuthController@login")->guest();
+$route->post("/login", "AuthController@loginProcess")->guest();
+$route->get("/logout", "AuthController@logout");
