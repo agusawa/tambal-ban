@@ -6,6 +6,19 @@ require_once __DIR__ . "/../Models/TirePatch.php";
 
 class TirePatchService extends Service
 {
+    public static function findOneById($id)
+    {
+        $stmt = static::getConnection()->prepare("SELECT * FROM `tire_patches` WHERE `id` = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $stmt->close();
+
+        $result = Arr::fetchAssoc($result);
+        return TirePatch::serializeMany($result);
+    }
+
     public static function search($keyword)
     {
         $keyword = "%$keyword%";
@@ -16,10 +29,21 @@ class TirePatchService extends Service
 
         $result = $stmt->get_result();
         $stmt->close();
-        
+
         $result = Arr::fetchAssoc($result);
 
         return TirePatch::serializeMany($result);
     }
-}
 
+    /**
+     * To find out whether the tire patch belongs to that user.
+     *
+     * @param User $user
+     * @param TirePatch $tirePatch
+     * @return boolean
+     */
+    public static function isOwnedBy($user, $tirePatch)
+    {
+        return $user->getId() === $tirePatch->getUserId();
+    }
+}
