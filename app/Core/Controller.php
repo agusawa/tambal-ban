@@ -51,7 +51,7 @@ abstract class Controller implements ControllerImp
      */
     protected function redirect($location)
     {
-        header("Location: $location");
+        header("Location: " . BASE_URL . $location);
     }
 
     /**
