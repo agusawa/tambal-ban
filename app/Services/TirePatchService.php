@@ -4,6 +4,7 @@ require_once __DIR__ . "/../Core/Service.php";
 require_once __DIR__ . "/../Core/Helpers/Arr.php";
 require_once __DIR__ . "/../Models/TirePatch.php";
 
+
 class TirePatchService extends Service
 {
     public static function findOneById($id)
@@ -45,5 +46,25 @@ class TirePatchService extends Service
     public static function isOwnedBy($user, $tirePatch)
     {
         return $user->getId() === $tirePatch->getUserId();
+    }
+
+    public static function insert($tirePatch)
+    {
+        $stmt = static::getConnection()->prepare("INSERT INTO 'users' ('name', 'address', 'description', 'whatsappNumber') VALUES (?, ?, ?, ?)");
+
+        $name = $tirePatch->getName();
+        $address = $tirePatch->getAddress();
+        $description = $tirePatch->getDescription();
+        $whatsappNumber = $tirePatch->getWhatsappNumber();
+
+        $stmt->bind_param("sssi", $name, $address, $description, $whatsappNumber);
+
+        $process = $stmt->execute();
+        $stmt->close();
+
+        if ($process) {
+            return true;
+        }
+            return false;
     }
 }
