@@ -14,8 +14,8 @@ class TirePatchController extends Controller
         $id = $this->request->param("id");
         $tirePatch = TirePatchService::findOneById($id);
 
-        if (TirePatchService::isOwnedBy($user, $tirePatch)) {
-            $this->render("edit.php", [
+        if ($tirePatch && TirePatchService::isOwnedBy($user, $tirePatch)) {
+            $this->render("tire-patches/edit.php", [
                 'tirePatch' => $tirePatch
             ]);
         } else {
@@ -31,27 +31,28 @@ class TirePatchController extends Controller
         $id = $this->request->param("id");
         $tirePatch = TirePatchService::findOneById($id);
 
-        if (TirePatchService::isOwnedBy($user, $tirePatch)) {
+        if ($tirePatch && TirePatchService::isOwnedBy($user, $tirePatch)) {
             $name = $this->request->input("name");
-            $email = $this->request->input("email");
+            $address = $this->request->input("address");
             $description = $this->request->input("description");
             $whatsappNumber = $this->request->input("whatsappNumber");
 
             $tirePatch->setName($name);
-            $tirePatch->setEmail($email);
+            $tirePatch->setAddress($address);
             $tirePatch->setDescription($description);
             $tirePatch->setWhatsappNumber($whatsappNumber);
-            
-            $process = TirePatchService::edit($user);
+
+            $process = TirePatchService::edit($tirePatch);
 
             if ($process) {
-                Session::setSuccess("Sukses");
+                Session::setSuccess("Data berhasil diedit.");
             } else {
                 Session::setError("Ada Kesalahan");
             }
         } else {
             Session::setError("Anda tidak dapat mengedit data ini. Data ini bukan milik Anda.");
-            $this->redirect("/tire-patches");
         }
+
+        $this->redirect("/tire-patches");
     }
 }

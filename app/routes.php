@@ -14,8 +14,8 @@ $route = new Route();
 |
 */
 
-$route->get("/", "HomeController@index");
-$route->get("/find", "HomeController@find");
+$route->get("/", "HomeController@index")->guest();
+$route->get("/find", "HomeController@find")->guest();
 
 $route->get("/signup", "AuthController@signUp")->guest();
 $route->post("/signup", "AuthController@signUpProcess")->guest();

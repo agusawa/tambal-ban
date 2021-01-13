@@ -20,7 +20,7 @@ class Route implements Bootable, RouteImp
      *
      * @var string
      */
-    public const HOME_PATH = "/";
+    public const HOME_PATH = "/tire-patches";
 
     /**
      * Path of current location.
@@ -49,7 +49,7 @@ class Route implements Bootable, RouteImp
     public function __construct()
     {
         $this->httpMethod = $_SERVER["REQUEST_METHOD"];
-        $this->currentPath = trim($_SERVER["PATH_INFO"] ?? $_GET["path"], "/");
+        $this->currentPath = trim(isset($_GET["path"]) ? $_GET["path"] : $_SERVER["PATH_INFO"], "/");
     }
 
     /**

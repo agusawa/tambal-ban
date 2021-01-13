@@ -1,0 +1,55 @@
+body {
+    font-family: Arial;
+}
+
+.btn {
+  border: none; /* Remove borders */
+  color: white; /* Add a text color */
+  padding: 14px; /* Add some padding */
+  cursor: pointer; /* Add a pointer cursor on mouse-over */
+  font-weight: bold; /* Add bold font weight */
+}
+
+.success {
+  background-color: #4caf50; /* Green */
+}
+.success:hover {
+  background-color: #46a049;
+}
+
+.info {
+  background-color: #2196f3; /* Blue */
+}
+.info:hover {
+  background: #0b7dda;
+}
+
+.warning {
+  background-color: #ff9800; /* Orange */
+}
+.warning:hover {
+  background: #e68a00;
+}
+
+.danger {
+  background-color: #f44336; /* Red */
+}
+.danger:hover {
+  background: #da190b;
+}
+
+.default {
+  background-color: #e7e7e7; /* Gray */
+  color: black;
+}
+.default:hover {
+  background: #ddd;
+}
+
+/* Style the input field inside the navbar */
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 8px;
+  border: 1px solid #ccc;
+}

@@ -12,11 +12,13 @@ class TirePatchService extends Service
         $stmt->bind_param("i", $id);
         $stmt->execute();
 
-        $result = $stmt->get_result();
+        $result = $stmt->get_result()->fetch_assoc();
         $stmt->close();
 
-        $result = Arr::fetchAssoc($result);
-        return TirePatch::serializeMany($result);
+        if ($result) {
+            return TirePatch::serialize($result);
+        }
+        return null;
     }
 
     public static function search($keyword)
