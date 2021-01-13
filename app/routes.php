@@ -22,3 +22,6 @@ $route->post("/signup", "AuthController@signUpProcess")->guest();
 $route->get("/login", "AuthController@login")->guest();
 $route->post("/login", "AuthController@loginProcess")->guest();
 $route->get("/logout", "AuthController@logout");
+
+$route->get("/tire-patches", "TirePatchController@index")->authenticated();
+$route->get("/tire-patches/delete", "TirePatchController@delete")->authenticated();

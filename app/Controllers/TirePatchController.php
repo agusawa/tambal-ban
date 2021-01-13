@@ -35,4 +35,29 @@ class TirePatchController extends Controller
             $this->redirect("/tire-patches");
         }
     }
+
+    public function index()
+    {
+        $userId = Auth::getUser()->getId();
+        $tirePatches = TirePatchService::ownedBy($userId);
+
+        
+        $this->render("tire-patches/index.php", [
+            'tirePatches' => $tirePatches
+        ]); 
+    }
+
+    public function delete($id)
+    {
+        $id = $this->request->param("id");
+        $process = TirePatchService::delete($id);
+
+        if ($process) {
+            Session::setSuccess("Tambal ban sukses dihapus");
+        } else {
+            Session::setError("Tambal ban gagal dihapus. Silakan coba lagi");
+        }
+
+        $this->redirect("/tire-patches");
+    }
 }
