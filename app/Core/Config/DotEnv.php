@@ -1,8 +1,10 @@
 <?php
 
+require_once __DIR__ . "/../Contracts/DotEnv.php";
+
 // Reference: https://dev.to/fadymr/php-create-your-own-php-dotenv-3k2i
 
-class DotEnv
+class DotEnv implements DotEnvImp
 {
     /**
      * The directory where the .env file can be located.

@@ -1,6 +1,8 @@
 <?php
 
-class Arr
+require_once __DIR__ . "/../Contracts/Arr.php";
+
+class Arr implements ArrImp
 {
     /**
      * Convert PHP SQL result to array of associative array.
