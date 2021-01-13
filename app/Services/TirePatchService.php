@@ -72,4 +72,37 @@ class TirePatchService extends Service
         // Jika proses gagal.
         return false;
     }
+
+    public static function OwnedBy($userId)
+    {
+        $stmt = static::getConnection()->prepare("SELECT * FROM `tire_patches` WHERE user_id = ?");
+        $stmt->bind_param("i", $userId);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $stmt->close();
+
+        $result = Arr::fetchAssoc($result);
+
+        return TirePatch::serializeMany($result);
+    }
+
+    public static function delete($id)
+    {
+        $tirePatch = self::findOneById($id);
+
+        if (!$tirePatch) return false;
+
+        $stmt = self::getConnection()->prepare("DELETE tire_patches WHERE `id` = ? LIMIT 1");
+        $stmt->bind_param("i", $id);
+        $process = $stmt->execute();
+        $stmt->close();
+
+        if ($process) {
+            return true;
+        }
+
+        // Jika proses gagal.
+        return false;
+    }
 }
