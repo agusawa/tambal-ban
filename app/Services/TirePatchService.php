@@ -4,6 +4,7 @@ require_once __DIR__ . "/../Core/Service.php";
 require_once __DIR__ . "/../Core/Helpers/Arr.php";
 require_once __DIR__ . "/../Models/TirePatch.php";
 
+
 class TirePatchService extends Service
 {
     public static function findOneById($id)
@@ -56,10 +57,34 @@ class TirePatchService extends Service
         $name = $tirePatch->getName();
         $address = $tirePatch->getAddress();
         $description = $tirePatch->getDescription();
-        $whatsapp_number = $tirePatch->getWhatsappNumber();
+        $whatsappNumber = $tirePatch->getWhatsappNumber();
         $id = $tirePatch->getId();
 
-        $stmt->bind_param("ssssi", $name, $address, $description, $whatsapp_number, $id);
+        $stmt->bind_param("ssssi", $name, $address, $description, $whatsappNumber, $id);
+
+        $process = $stmt->execute();
+        $stmt->close();
+
+        // Jika proses sukses.
+        if ($process) {
+            return true;
+        }
+
+        // Jika proses gagal.
+        return false;
+    }
+
+    public static function insert($tirePatch)
+    {
+        $stmt = static::getConnection()->prepare("INSERT INTO `tire_patches` (`user_id`, `name`, `address`, `description`, `whatsappNumber`) VALUES (?, ?, ?, ?, ?)");
+
+        $userId = $tirePatch->getUserId();
+        $name = $tirePatch->getName();
+        $address = $tirePatch->getAddress();
+        $description = $tirePatch->getDescription();
+        $whatsappNumber = $tirePatch->getWhatsappNumber();
+
+        $stmt->bind_param("issss", $userId, $name, $address, $description, $whatsappNumber);
 
         $process = $stmt->execute();
         $stmt->close();
@@ -103,6 +128,10 @@ class TirePatchService extends Service
         }
 
         // Jika proses gagal.
+        return false;
+        if ($process) {
+            return true;
+        }
         return false;
     }
 }

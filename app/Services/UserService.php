@@ -94,7 +94,28 @@ class UserService extends Service
         if ($process) {
             return true;
         }
+        // Jika proses gagal.
+        return false;
+    }
 
+    public static function edit($user)
+    {
+        $stmt = self::getConnection()->prepare("UPDATE users WHERE 'id' = ? ");
+
+        $name = $user->getName();
+        $email = $user->getEmail();
+        $password = $user->getPassword();
+        $created = $user->getCreated();
+
+        $stmt->bind_param("sssi", $name, $email, $password, $created);
+
+        $process = $stmt->execute();
+        $stmt->close();
+
+        // Jika proses sukses.
+        if ($process) {
+            return true;
+        }
         // Jika proses gagal.
         return false;
     }

@@ -1,6 +1,8 @@
 <?php
 
-class MySQL
+require_once __DIR__ . "/../Contracts/MySQL.php";
+
+class MySQL implements MySQLImp
 {
     /**
      * MySQL connection.

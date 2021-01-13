@@ -1,8 +1,9 @@
 <?php
 
 require_once __DIR__ . "/../Core/Controller.php";
-require_once __DIR__ . "/../Services/UserService.php";
+require_once __DIR__ . "/../Core/Helpers/Auth.php";
 require_once __DIR__ . "/../Core/Helpers/Hash.php";
+require_once __DIR__ . "/../Services/UserService.php";
 
 class AccountController extends Controller
 {
@@ -26,7 +27,7 @@ class AccountController extends Controller
 
                 $process = UserService::changePassword($user);
 
-                if ($process){
+                if ($process) {
                     Session::setSuccess("Successfully changed password");
                 } else {
                     Session::setError("Ada kesalahan ada sistem.");
@@ -39,6 +40,36 @@ class AccountController extends Controller
         }
         $this->render("/account/change-password.php", [
             "user" => Auth::getUser()
+        ]);
+    }
+
+    public function edit()
+    {
+        $this->render("account/edit.php", [
+            "user" => Auth::getUser(),
+        ]);
+    }
+
+    public function editProcess()
+    {
+        $user = Auth::getUser();
+
+        $name = $this->request->input("name");
+        $email = $this->request->input("email");
+
+        $user->setName($name);
+        $user->setEmail($email);
+
+        $process = UserService::edit($user);
+
+        if ($process) {
+            Session::setSuccess("Data berhasil diubah");
+        } else {
+            Session::setError("Ada kesalahan");
+        }
+
+        $this->render("account/edit.php", [
+            "user" => Auth::getUser(),
         ]);
     }
 }

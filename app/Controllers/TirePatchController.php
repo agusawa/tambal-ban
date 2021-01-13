@@ -80,4 +80,34 @@ class TirePatchController extends Controller
 
         $this->redirect("/tire-patches");
     }
+
+    public function add()
+    {
+        $this->render("tire-patches/add.php");
+    }
+
+    public function addProcess()
+    {
+        $name = $this->request->input("name");
+        $email = $this->request->input("email");
+        $address = $this->request->input("address");
+        $description = $this->request->input("description");
+        $whatsappNumber = $this->request->input("whatsappNumber");
+
+        $tirePatch = new TirePatch();
+        $tirePatch->setName($name);
+        $tirePatch->setAddress($address);
+        $tirePatch->setDescription($description);
+        $tirePatch->setWhatsappNumber($whatsappNumber);
+
+        $process = tirePatchService::insert($tirePatch);
+
+        if ($process) {
+            Session::setSuccess("data added successfully");
+        } else {
+            Session::setError("please check your data again");
+        }
+
+        $this->render("tire-patches/add.php");
+    }
 }

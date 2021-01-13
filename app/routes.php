@@ -19,6 +19,7 @@ $route->get("/find", "HomeController@find")->guest();
 
 $route->get("/signup", "AuthController@signUp")->guest();
 $route->post("/signup", "AuthController@signUpProcess")->guest();
+
 $route->get("/login", "AuthController@login")->guest();
 $route->post("/login", "AuthController@loginProcess")->guest();
 $route->get("/logout", "AuthController@logout");
@@ -31,3 +32,9 @@ $route->post("/tire-patches/edit", "TirePatchController@editProcess")->authentic
 
 $route->get("/account/change-password", "AccountController@changePassword")->authenticated();
 $route->post("/account/change-password", "AccountController@changePasswordProcess")->authenticated();
+
+$route->get("/tire-patches/add", "TirePatchController@add")->authenticated();
+$route->post("/tire-patches/add", "TirePatchController@addProcess")->authenticated();
+
+$route->get("/account/edit", "AccountController@edit")->authenticated();
+$route->post("/account/edit", "AccountControler@editProcess")->authenticated();
