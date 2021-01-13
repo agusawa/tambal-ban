@@ -22,3 +22,9 @@ $route->post("/signup", "AuthController@signUpProcess")->guest();
 $route->get("/login", "AuthController@login")->guest();
 $route->post("/login", "AuthController@loginProcess")->guest();
 $route->get("/logout", "AuthController@logout");
+
+$route->get("/tire-patches/edit", "TirePatchController@edit")->authenticated();
+$route->post("/tire-patches/edit", "TirePatchController@editProcess")->authenticated();
+
+$route->get("/account/change-password", "AccountController@changePassword")->authenticated();
+$route->post("/account/change-password", "AccountController@changePasswordProcess")->authenticated();

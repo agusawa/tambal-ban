@@ -77,4 +77,25 @@ class UserService extends Service
 
         return false;
     }
+
+    public static function changePassword($user)
+    {
+        $stmt = static::getConnection()->prepare("UPDATE `users` SET `password` = ? WHERE id = ?");
+
+        $password = $user->getPassword();
+        $id = $user->getId();
+
+        $stmt->bind_param("si", $password, $id);
+
+        $process = $stmt->execute();
+        $stmt->close();
+
+        // Jika proses sukses.
+        if ($process) {
+            return true;
+        }
+
+        // Jika proses gagal.
+        return false;
+    }
 }

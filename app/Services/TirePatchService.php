@@ -46,4 +46,28 @@ class TirePatchService extends Service
     {
         return $user->getId() === $tirePatch->getUserId();
     }
+
+    public static function edit($tirePatch)
+    {
+        $stmt = static::getConnection()->prepare("UPDATE `tire_patches` SET `name` = ?, `address` = ?, `description` = ?, `whatsapp_number` = ? WHERE id = ?");
+
+        $name = $tirePatch->getName();
+        $address = $tirePatch->getAddress();
+        $description = $tirePatch->getDescription();
+        $whatsapp_number = $tirePatch->getWhatsappNumber();
+        $id = $tirePatch->getId();
+
+        $stmt->bind_param("ssssi", $name, $address, $description, $whatsapp_number, $id);
+
+        $process = $stmt->execute();
+        $stmt->close();
+
+        // Jika proses sukses.
+        if ($process) {
+            return true;
+        }
+
+        // Jika proses gagal.
+        return false;
+    }
 }
