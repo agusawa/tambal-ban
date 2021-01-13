@@ -76,15 +76,16 @@ class TirePatchService extends Service
 
     public static function insert($tirePatch)
     {
-        $stmt = static::getConnection()->prepare("INSERT INTO `tire_patches` (`user_id`, `name`, `address`, `description`, `whatsappNumber`) VALUES (?, ?, ?, ?, ?)");
+        $stmt = static::getConnection()->prepare("INSERT INTO `tire_patches` (`user_id`, `name`, `address`, `description`, `whatsapp_number`, `created`) VALUES (?, ?, ?, ?, ?, ?)");
 
         $userId = $tirePatch->getUserId();
         $name = $tirePatch->getName();
         $address = $tirePatch->getAddress();
         $description = $tirePatch->getDescription();
         $whatsappNumber = $tirePatch->getWhatsappNumber();
+        $created = $tirePatch->getCreated();
 
-        $stmt->bind_param("issss", $userId, $name, $address, $description, $whatsappNumber);
+        $stmt->bind_param("issssi", $userId, $name, $address, $description, $whatsappNumber, $created);
 
         $process = $stmt->execute();
         $stmt->close();
@@ -98,9 +99,9 @@ class TirePatchService extends Service
         return false;
     }
 
-    public static function OwnedBy($userId)
+    public static function ownedBy($userId)
     {
-        $stmt = static::getConnection()->prepare("SELECT * FROM `tire_patches` WHERE user_id = ?");
+        $stmt = static::getConnection()->prepare("SELECT * FROM `tire_patches` WHERE `user_id` = ?");
         $stmt->bind_param("i", $userId);
         $stmt->execute();
 
@@ -118,8 +119,9 @@ class TirePatchService extends Service
 
         if (!$tirePatch) return false;
 
-        $stmt = self::getConnection()->prepare("DELETE tire_patches WHERE `id` = ? LIMIT 1");
+        $stmt = self::getConnection()->prepare("DELETE FROM `tire_patches` WHERE `id` = ? LIMIT 1");
         $stmt->bind_param("i", $id);
+
         $process = $stmt->execute();
         $stmt->close();
 

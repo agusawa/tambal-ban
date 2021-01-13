@@ -8,17 +8,22 @@
 
 <body>
 	<div style="max-width: 500px; margin: auto;">
+		<a href="<?= BASE_URL ?>">Home</a>
+
+		<br>
 
 		<h1>Sign Up Page</h1>
 
 		<?php if ($success) : ?>
-			<h4>Success</h4>
-			<p><?= $success ?></p>
+			<div class="alert success">
+				<?= $success ?>
+			</div>
 		<?php endif ?>
 
 		<?php if ($error) : ?>
-			<h4>Error</h4>
-			<p><?= $error ?></p>
+			<div class="alert danger">
+				<?= $error ?>
+			</div>
 		<?php endif ?>
 
 		<form action="" method="POST">

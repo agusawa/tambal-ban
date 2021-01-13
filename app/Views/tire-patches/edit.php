@@ -14,11 +14,11 @@
 
 		<h1>Edit Tire Patch</h1>
 
-		<form action="">
+		<form action="" method="POST">
 			<input type="text" name="name" placeholder="Name" value="<?= $tirePatch->getName() ?>"> <br>
-			<input type="address" name="address" placeholder="Address" value="<?= $tirePatch->getAddress() ?>"> <br>
-			<input type="description" name="description" placeholder="Description" value="<?= $tirePatch->getDescription() ?>"> <br>
-			<input type="whatsappNumber" name="whatsappNumber" placeholder="Whatsapp Number" value="<?= $tirePatch->getWhatsappNumber() ?>"> <br>
+			<input type="text" name="address" placeholder="Address" value="<?= $tirePatch->getAddress() ?>"> <br>
+			<input type="text" name="description" placeholder="Description" value="<?= $tirePatch->getDescription() ?>"> <br>
+			<input type="text" name="whatsappNumber" placeholder="Whatsapp Number" value="<?= $tirePatch->getWhatsappNumber() ?>"> <br>
 			<button type="submit" class="btn success">Edit</button>
 			<a href="<?= BASE_URL . "/tire-patches" ?>" class="btn default">Kembali</a>
 		</form>

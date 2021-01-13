@@ -100,14 +100,13 @@ class UserService extends Service
 
     public static function edit($user)
     {
-        $stmt = self::getConnection()->prepare("UPDATE users WHERE 'id' = ? ");
+        $stmt = self::getConnection()->prepare("UPDATE `users` SET `name` = ?, `email` = ? WHERE `id` = ?");
 
         $name = $user->getName();
         $email = $user->getEmail();
-        $password = $user->getPassword();
-        $created = $user->getCreated();
+        $id = $user->getId();
 
-        $stmt->bind_param("sssi", $name, $email, $password, $created);
+        $stmt->bind_param("ssi", $name, $email, $id);
 
         $process = $stmt->execute();
         $stmt->close();

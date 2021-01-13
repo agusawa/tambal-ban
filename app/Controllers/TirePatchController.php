@@ -61,13 +61,12 @@ class TirePatchController extends Controller
         $userId = Auth::getUser()->getId();
         $tirePatches = TirePatchService::ownedBy($userId);
 
-        
         $this->render("tire-patches/index.php", [
             'tirePatches' => $tirePatches
-        ]); 
+        ]);
     }
 
-    public function delete($id)
+    public function delete()
     {
         $id = $this->request->param("id");
         $process = TirePatchService::delete($id);
@@ -88,19 +87,22 @@ class TirePatchController extends Controller
 
     public function addProcess()
     {
+        $user = Auth::getUser();
+
         $name = $this->request->input("name");
-        $email = $this->request->input("email");
         $address = $this->request->input("address");
         $description = $this->request->input("description");
         $whatsappNumber = $this->request->input("whatsappNumber");
 
         $tirePatch = new TirePatch();
+        $tirePatch->setUserId($user->getId());
         $tirePatch->setName($name);
         $tirePatch->setAddress($address);
         $tirePatch->setDescription($description);
         $tirePatch->setWhatsappNumber($whatsappNumber);
+        $tirePatch->setCreated(time());
 
-        $process = tirePatchService::insert($tirePatch);
+        $process = TirePatchService::insert($tirePatch);
 
         if ($process) {
             Session::setSuccess("data added successfully");
@@ -108,6 +110,6 @@ class TirePatchController extends Controller
             Session::setError("please check your data again");
         }
 
-        $this->render("tire-patches/add.php");
+        $this->redirect("/tire-patches");
     }
 }

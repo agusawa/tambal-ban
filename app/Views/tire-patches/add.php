@@ -2,18 +2,17 @@
 <html>
 
 <head>
-	<title>Change Password</title>
+	<title>Add Tire Patch</title>
 	<link rel="stylesheet" href="<?= BASE_URL . '/css/style.css' ?>">
 </head>
 
 <body>
-	<div style="max-width: 700px; margin: auto;">
+	<div style="max-width: 500px; margin: auto;">
 		<a href="<?= BASE_URL . "/account/edit" ?>">Ubah Profil</a> |
 		<a href="<?= BASE_URL . "/account/change-password" ?>">Ubah Password</a> |
 		<a href="<?= BASE_URL . "/logout" ?>">Log out</a>
 
-		<h1>Change Password</h1>
-
+		<h1>Add Tire Patch</h1>
 		<?php if ($success) : ?>
 			<div class="alert success">
 				<?= $success ?>
@@ -27,11 +26,11 @@
 		<?php endif ?>
 
 		<form action="" method="POST">
-			<input type="password" name="oldPassword" placeholder="Old Password"> <br>
-			<input type="password" name="newPassword" placeholder="New Password"> <br>
-			<input type="password" name="passwordConfirmation" placeholder="Password Confirmation"> <br>
-			<button type="submit" class="btn success">Simpan</button>
-			<a href="<?= BASE_URL . "/tire-patches" ?>" class="btn default">Back</a>
+			<input type="text" name="name" placeholder="Name"> <br>
+			<input type="text" name="address" placeholder="Address"> <br>
+			<input type="text" name="description" placeholder="Description"> <br>
+			<input type="number" name="whatsappNumber" placeholder="Whatsapp Number"> <br>
+			<button type="submit">Add</button>
 		</form>
 	</div>
 </body>

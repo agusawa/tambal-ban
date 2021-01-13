@@ -50,6 +50,12 @@ body {
 input {
   width: 100%;
   padding: 12px;
+  margin-top: 8px;
   margin-bottom: 8px;
   border: 1px solid #ccc;
+}
+
+.alert {
+  padding: 20px;
+  color: white;
 }

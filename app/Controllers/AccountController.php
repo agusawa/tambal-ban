@@ -65,7 +65,7 @@ class AccountController extends Controller
         if ($process) {
             Session::setSuccess("Data berhasil diubah");
         } else {
-            Session::setError("Ada kesalahan");
+            Session::setError("Email has been registered. Please use another email");
         }
 
         $this->render("account/edit.php", [
